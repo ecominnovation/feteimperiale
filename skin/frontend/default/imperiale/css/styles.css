@@ -3089,7 +3089,7 @@ body {
 .header-language-background #header-search { float: right; position: relative; top: 6px }
 /*.cms-page-view{background:url(../images/top.jpg) repeat-x center top}
 .catalog-product-view{background:url(../images/top2.jpg) repeat-x center top}*/
-#header-search #search_mini_form #search { display: none; float: right; width: 55%; height: 35px; }
+#header-search #search_mini_form #search { display: none; float: right; width: 55%; height: 29px; }
 #header-search #search_mini_form .search-button::before, #header-search #search_mini_form .search-button { background-image: url(../images/loupe2.png); background-repeat: no-repeat; background-position: center center;
     float: right;
     height: auto;
@@ -3611,7 +3611,7 @@ a.skip-link {
     height: 40px;
     padding-right: 40px;
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
-    border: 1px solid #000000;
+    border: 1px solid #e5e5e5;
     }
 #search_mini_form .search-button {
     text-indent: -9999px;
