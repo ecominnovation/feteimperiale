@@ -1,0 +1,281 @@
+<?php
+
+$magicToolboxHelper = Mage::helper('magiczoomplus/settings');
+$tool = $magicToolboxHelper->loadTool('product');
+
+$magic360ClassName = Mage::registry('magic360ClassName');
+if($magic360ClassName) {
+    $templateFilename = Mage::getSingleton('core/design_package')->getTemplateFilename($magic360ClassName.'/media.phtml');
+} else {
+    $templateFilename = $magicToolboxHelper->getTemplateFilename('product.info.media');
+}
+
+if($tool->params->checkValue('enable-effect', 'No')) {
+    require($templateFilename);
+    return;
+}
+
+$_product = $this->getProduct();
+$id = $_product->getId();
+$_product_title = $title = $this->htmlEscape($_product->getName());
+$main_image_file = $_product->getImage();
+$main = '';
+$scriptHTML = '';
+
+if($main_image_file && $main_image_file != 'no_selection') {
+
+    $output_helper = $this->helper('catalog/output');
+    $description = $this->htmlEscape($output_helper->productAttribute($_product, $_product->getDescription(), 'description'));
+    $shortDescription = $this->htmlEscape($output_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description'));
+    $alt = $this->htmlEscape($_product->getImageLabel());
+    if(empty($alt)) {
+        $label = $title;
+    } else {
+        $label = $alt;
+        if($tool->params->checkValue('use-individual-titles', 'Yes')) {
+            $title = $alt;
+        }
+    }
+
+    $img = $this->helper('catalog/image')->init($_product, 'image', $main_image_file)->__toString();
+    $originalSizeArray = $this->helper('catalog/image')->getOriginalSizeArray();
+    if($tool->params->checkValue('square-images', 'Yes')) {
+        $big_image_size = ($originalSizeArray[0] > $originalSizeArray[1]) ? $originalSizeArray[0] : $originalSizeArray[1];
+        $img = $this->helper('catalog/image')->watermark(null, null)->resize($big_image_size)->__toString();
+    }
+    list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('thumb', $originalSizeArray);
+    $thumb = $this->helper('catalog/image')->watermark(null, null)->resize($w, $h)->__toString();
+
+    $main = $tool->getMainTemplate(compact('id', 'alt', 'label', 'title', 'description', 'shortDescription', 'img', 'thumb'));
+
+} else {
+    $tool->params->setValue('enable-effect', 'No');
+    require($templateFilename);
+    return;
+}
+
+$mainProductImages = array();
+$associatedProductImages = array();
+$hiddenImages = array();
+$moreViewsCaption = $this->__('More Views');
+$mainImageSelectorExists = false;
+
+if(!$this->_isGalleryDisabled) {
+
+    $event = strtolower($tool->params->getValue('selectors-change'));
+
+    $iCount = count($this->getGalleryImages()->getItems());
+    if($iCount) {
+        foreach($this->getGalleryImages() as $_image) {
+            $_image_file = $_image->getFile();
+            $_image_path  = $_image->getPath();
+            if(!file_exists($_image_path)) continue;
+            $originalSizeArray = getimagesize($_image_path);
+            $img = $this->helper('catalog/image')->init($_product, 'image', $_image_file)->__toString();
+            if($tool->params->checkValue('square-images', 'Yes')) {
+                $big_image_size = ($originalSizeArray[0] > $originalSizeArray[1]) ? $originalSizeArray[0] : $originalSizeArray[1];
+                $img = $this->helper('catalog/image')->watermark(null, null)->resize($big_image_size)->__toString();
+            }
+            list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('thumb', $originalSizeArray);
+            $medium = $this->helper('catalog/image')->watermark(null, null)->resize($w, $h)->__toString();
+            list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('selector', $originalSizeArray);
+            $thumb = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image_file)->resize($w, $h)->__toString();
+            $alt = $this->htmlEscape($_image->getLabel());
+            if($tool->params->checkValue('use-individual-titles', 'Yes')) {
+                $title = empty($alt) ? $_product_title : $alt;
+            }
+
+            $a = $tool->getSelectorTemplate(compact('id', 'img', 'thumb', 'medium', 'title', 'alt'));
+            $a = str_replace('<a ', '<a on'.$event.'="magicToolboxOnChangeSelector(this);" ', $a);
+            if($_image_file == $main_image_file) {
+                $mainImageSelectorExists = true;
+                //$a = str_replace('<img ', '<img id="imageMain'.$id.'" ', $a);
+            }
+            if($tool->params->checkValue('ignore-magento-css', 'Yes')) {
+                $a = str_replace('<a ', '<a class="ignore-magento-css" ', $a);
+                $a = str_replace('<img ', '<img class="ignore-magento-css" ', $a);
+            }
+            $mainProductImages[] = $a;
+        }
+    }
+    if($magic360ClassName) {
+        $magic360Images = Mage::registry('magic360Images');
+        if(count($magic360Images)) {
+            $magic360Helper = Mage::helper($magic360ClassName.'/settings');
+            $magic360Tool = $magic360Helper->loadTool('product');
+            if(!$magic360Tool->params->checkValue('enable-effect', 'No')) {
+                $magic360ImageHelper = Mage::helper($magic360ClassName.'/image');
+                $baseDir = Mage::getBaseDir('media').DS.'magictoolbox'.DS.$magic360ClassName;
+                $_magic360Images = array();
+                $_magic360Selector = '';
+                foreach($magic360Images as $magic360Image) {
+                    if(!file_exists($baseDir.$magic360Image['file'])) continue;
+                    $img = $magic360ImageHelper->init($magic360Image['file'])->__toString();
+                    $originalSizeArray = $magic360ImageHelper->getOriginalSizeArray();
+                    if($magic360Tool->params->checkValue('square-images', 'Yes')) {
+                        $big_image_size = ($originalSizeArray[0] > $originalSizeArray[1]) ? $originalSizeArray[0] : $originalSizeArray[1];
+                        $img = $magic360ImageHelper->setWatermarkFile(null)->resize($big_image_size)->__toString();
+                    }
+                    list($w, $h) = $magic360Helper->magicToolboxGetSizes('thumb', $originalSizeArray);
+                    $medium = $magic360ImageHelper->setWatermarkFile(null)->resize($w, $h)->__toString();
+                    $_magic360Images[] = compact('img', 'medium');
+                    if(!$_magic360Selector) {
+                        $_magic360Selector['file'] = $magic360Image['file'];
+                        $_magic360Selector['size'] = $originalSizeArray;
+                    }
+                }
+                if($_magic360Selector) {
+                    //$magic360ImageHelper->init($_magic360Selector['file'])->setWatermarkFile(null);
+                    //list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('selector', $_magic360Selector['size']);
+                    //$watermark = $magic360Tool->params->getValue('watermark');
+                    //if(!empty($watermark) && file_exists(BP.DS.$watermark)) {
+                    //    $watermark_size = getimagesize(BP.DS.$watermark);
+                    //    $thumb = $magic360ImageHelper->setWatermarkFile($watermark)
+                    //        ->setWatermarkImageOpacity($magic360Tool->params->getValue('watermark-opacity'))
+                    //        ->setWatermarkPosition('stretch')
+                    //        ->setWatermarkSize(array('width' => $watermark_size[0], 'height' => $watermark_size[1]))
+                    //        ->resize($w, $h)->__toString();
+                    //} else {
+                    //    $thumb = $magic360ImageHelper->setWatermarkFile(Mage::getStoreConfig("design/watermark/thumbnail_image"))
+                    //        ->setWatermarkImageOpacity(Mage::getStoreConfig("design/watermark/thumbnail_imageOpacity"))
+                    //        ->setWatermarkPosition(Mage::getStoreConfig("design/watermark/thumbnail_position"))
+                    //        ->setWatermarkSize(Mage::getStoreConfig("design/watermark/thumbnail_size"))
+                    //        ->resize($w, $h)->__toString();
+                    //}
+                    $icon = $magic360Tool->params->getValue('icon');
+                    if(!empty($icon) && file_exists(BP.DS.$icon)) {
+                        $_magic360Selector['file'] = $icon;
+                        $_magic360Selector['size'] = getimagesize(BP.DS.$icon);
+                    }
+                    $magic360ImageHelper->init($_magic360Selector['file'])
+                        ->setBaseDir(BP)
+                        ->setWatermarkFile(Mage::getStoreConfig("design/watermark/thumbnail_image"))
+                        ->setWatermarkImageOpacity(Mage::getStoreConfig("design/watermark/thumbnail_imageOpacity"))
+                        ->setWatermarkPosition(Mage::getStoreConfig("design/watermark/thumbnail_position"))
+                        ->setWatermarkSize(Mage::getStoreConfig("design/watermark/thumbnail_size"))
+                        ->__toString();
+                    if($magic360Tool->params->checkValue('square-images', 'Yes')) {
+                        $big_image_size = ($_magic360Selector['size'][0] > $_magic360Selector['size'][1]) ? $_magic360Selector['size'][0] : $_magic360Selector['size'][1];
+                        $magic360ImageHelper->setWatermarkFile(null)->resize($big_image_size)->__toString();
+                    }
+                    list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('selector', $_magic360Selector['size']);
+                    $thumb = $magic360ImageHelper->resize($w, $h)->__toString();
+
+                    $addClass = '';
+                    if($tool->params->checkValue('ignore-magento-css', 'Yes')) {
+                        $addClass = 'ignore-magento-css';
+                    }
+                    $_magic360Selector = '<a class="magic360selector '.$addClass.'" title="360" href="#" onclick="return false;"><img class="'.$addClass.'" src="'.$thumb.'" alt="360" /></a>';
+                }
+                if($magic360Tool->isEnabled(count($_magic360Images), $id)) {
+                    $main = '<div>'.$main.'</div>';//NOTE: we need this div because of issue with MZP, which clones the parent node (an issue with the disappearance of main image container)
+                    $main = '<div id="mainImageContainer" style="display: none;">'.$main.'</div>'.
+                            '<div id="magic360Container">'.$magic360Tool->getMainTemplate($_magic360Images, array("id" => "productMagic360")).'</div>';
+                    //$mainProductImages[] = $_magic360Selector;
+                    array_unshift($mainProductImages, $_magic360Selector);
+                }
+            }
+        }
+    }
+    if($_product->getTypeId() == 'configurable') {
+        if($tool->params->checkValue('show-associated-product-images', 'Yes')) {
+            $scriptHTML = 'var useAssociatedProductImages = true;';
+            $selectorsVisibility = $tool->params->checkValue('load-associated-product-images', 'within a gallery');
+            $scrollEnabled = $tool->params->checkValue('magicscroll', 'Yes');
+
+            //$associatedProducts = $_product->loadByAttribute('sku', $_product->getSku())->getTypeInstance()->getUsedProducts();
+            $associatedProducts = $_product->getTypeInstance(true)->getUsedProducts(null, $_product);//#67892
+
+            foreach($associatedProducts as $associatedProduct) {
+                $associatedProductId = $associatedProduct->getId();
+                //NOTE: to get gallery
+                //$_associatedProduct = Mage::getModel('catalog/product')->load($associatedProductId);
+                if($associatedProduct->image && $associatedProduct->image != 'no_selection') {
+                    $associatedImg = $this->helper('catalog/image')->init($associatedProduct, 'image', $associatedProduct->getImage())->__toString();
+                    $originalSizeArray = $this->helper('catalog/image')->getOriginalSizeArray();
+                    if($tool->params->checkValue('square-images', 'Yes')) {
+                        $big_image_size = ($originalSizeArray[0] > $originalSizeArray[1]) ? $originalSizeArray[0] : $originalSizeArray[1];
+                        $associatedImg = $this->helper('catalog/image')->watermark(null, null)->resize($big_image_size)->__toString();
+                    }
+                    list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('thumb', $originalSizeArray);
+                    $associatedThumb = $this->helper('catalog/image')->watermark(null, null)->resize($w, $h)->__toString();
+                    list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('selector', $originalSizeArray);
+                    $associatedSelector = $this->helper('catalog/image')->init($associatedProduct, 'thumbnail', $associatedProduct->getImage())->resize($w, $h)->__toString();
+
+                    $alt = $this->htmlEscape($associatedProduct->getImageLabel());
+                    if($tool->params->checkValue('use-individual-titles', 'Yes')) {
+                        $title = empty($alt) ? $_product_title : $alt;
+                    }
+
+                    $selector = $tool->getSelectorTemplate(array(
+                        'id' => $id,
+                        'img' => $associatedImg,
+                        'thumb' => $associatedSelector,
+                        'medium' => $associatedThumb,
+                        'title' => $title,
+                        'alt' => $alt
+                    ));
+
+                    $selector = str_replace('<a ', '<a data-id="'.$associatedProductId.'" on'.$event.'="magicToolboxOnChangeSelectorConfigurable(this);" ', $selector);
+                    $selector = str_replace('<img ', '<img id="imageConfigurable'.$associatedProductId.'" ', $selector);
+
+                    if(!$selectorsVisibility) {
+                        $selector = str_replace('<a ', '<a class="hidden-selector" ', $selector);
+                        if($scrollEnabled) {
+                            $hiddenImages[] = $selector;
+                        } else {
+                            $associatedProductImages[] = $selector;
+                        }
+                    } else {
+                        if($scrollEnabled) {
+                            $hiddenImages[] = $selector;
+                            $associatedProductImages[] = $selector;
+                        } else {
+                            $associatedProductImages[] = $selector;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+//NOTE: another way to get product options data
+$_productOptions = $_product->getOptions();
+if($_productOptions)
+foreach($_productOptions as $_option) {
+    $optionType = $_option->getType();
+    if($optionType == Mage_Catalog_Model_Product_Option::OPTION_TYPE_DROP_DOWN || $optionType == Mage_Catalog_Model_Product_Option::OPTION_TYPE_RADIO) {
+        $optionValues = array();
+        foreach($_option->getValues() as $_optionValue) {
+            $optionValues[$_optionValue->getOptionTypeId()] = strtolower(trim($_optionValue->getTitle()));
+        }
+        $scriptHTML .= ' optionLabels[\''.$_option->getId().'\'] = '.Mage::helper('core')->jsonEncode($optionValues).';'.
+                       ' optionTitles[\''.$_option->getId().'\'] = \''.strtolower(trim($_option->getTitle())).'\'; ';
+    }
+}
+
+if(count($mainProductImages) == 1 && $mainImageSelectorExists && (empty($associatedProductImages) || !$selectorsVisibility) /*&& empty($hiddenImages)*/) {
+    $mainProductImages = array();
+}
+if(empty($mainProductImages) && (empty($associatedProductImages) || !$selectorsVisibility)) {
+    $moreViewsCaption = '';
+}
+if(!empty($hiddenImages)) {
+    echo '<div style="display: none !important;">'.implode($hiddenImages).'</div>';
+}
+echo MagicToolboxTemplateHelperClass::render(array(
+    'main' => $main,
+    'thumbs' => array_merge($mainProductImages, $associatedProductImages),
+    'pid' => $id,
+    'moreViewsCaption' => $moreViewsCaption
+));
+if($scriptHTML) {
+    echo '<script type="text/javascript">'.$scriptHTML.'</script>';
+}
+
+echo '<img id="image" scr="" style="display: none !important;" />';
+
+?>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <block type="magiczoomplus/header" name="magiczoomplus_header" before="magic360_header" />
+        </reference>
+        <reference name="right.reports.product.viewed"><!-- left.reports.product.viewed -->
+            <action method="setTemplate">
+                <template helper="magiczoomplus/settings/getBlockTemplate">
+                    <name>right.reports.product.viewed</name>
+                    <template>magiczoomplus/product_viewed.phtml</template>
+                </template>
+            </action>
+        </reference>
+    </default>
+    <catalog_product_view>
+        <reference name="magiczoomplus_header">
+            <action method="setPageType">
+                <type>product</type>
+            </action>
+        </reference>
+        <reference name="product.info.media">
+            <action method="setTemplate">
+                <template helper="magiczoomplus/settings/getBlockTemplate">
+                    <name>product.info.media</name>
+                    <template>magiczoomplus/media.phtml</template>
+                </template>
+            </action>
+        </reference>
+    </catalog_product_view>
+
+    <!-- DEPRECATED -->
+    <!--<PRODUCT_TYPE_configurable>
+        <reference name="product.info.options.configurable">
+            <action method="setTemplate">
+                <template>magiczoomplus/configurable.phtml</template>
+            </action>
+        </reference>
+    </PRODUCT_TYPE_configurable>-->
+
+    <review_product_list>
+        <reference name="magiczoomplus_header">
+            <action method="setPageType">
+                <type>product</type>
+            </action>
+        </reference>
+        <reference name="product.info.media">
+            <action method="setTemplate">
+                <template helper="magiczoomplus/settings/getBlockTemplate">
+                    <name>product.info.media</name>
+                    <template>magiczoomplus/media.phtml</template>
+                </template>
+            </action>
+        </reference>
+    </review_product_list>
+    <catalog_category_default>
+        <reference name="magiczoomplus_header">
+            <action method="setPageType">
+                <type>category</type>
+            </action>
+        </reference>
+        <reference name="product_list">
+            <action method="setTemplate">
+                <template helper="magiczoomplus/settings/getBlockTemplate">
+                    <name>product_list</name>
+                    <template>magiczoomplus/list.phtml</template>
+                </template>
+            </action>
+        </reference>
+    </catalog_category_default>
+    <catalog_category_layered>
+        <reference name="magiczoomplus_header">
+            <action method="setPageType">
+                <type>category</type>
+            </action>
+        </reference>
+        <reference name="product_list">
+            <action method="setTemplate">
+                <template helper="magiczoomplus/settings/getBlockTemplate">
+                    <name>product_list</name>
+                    <template>magiczoomplus/list.phtml</template>
+                </template>
+            </action>
+        </reference>
+    </catalog_category_layered>
+    <catalog_category_layered_nochildren>
+        <reference name="left.reports.product.viewed">
+            <action method="setTemplate">
+                <template helper="magiczoomplus/settings/getBlockTemplate">
+                    <name>left.reports.product.viewed</name>
+                    <template>magiczoomplus/product_viewed.phtml</template>
+                </template>
+            </action>
+        </reference>
+    </catalog_category_layered_nochildren>
+    <catalogsearch_result_index>
+        <reference name="magiczoomplus_header">
+            <action method="setPageType">
+                <type>category</type>
+            </action>
+        </reference>
+        <reference name="search_result_list">
+            <action method="setTemplate">
+                <template helper="magiczoomplus/settings/getBlockTemplate">
+                    <name>search_result_list</name>
+                    <template>magiczoomplus/list.phtml</template>
+                </template>
+            </action>
+        </reference>
+    </catalogsearch_result_index>
+    <catalogsearch_advanced_result>
+        <reference name="magiczoomplus_header">
+            <action method="setPageType">
+                <type>category</type>
+            </action>
+        </reference>
+        <reference name="search_result_list">
+            <action method="setTemplate">
+                <template helper="magiczoomplus/settings/getBlockTemplate">
+                    <name>search_result_list</name>
+                    <template>magiczoomplus/list.phtml</template>
+                </template>
+            </action>
+        </reference>
+    </catalogsearch_advanced_result>
+    <cms_index_index>
+        <reference name="magiczoomplus_header">
+            <action method="setPageType">
+                <type>home</type>
+            </action>
+        </reference>
+    </cms_index_index>
+</layout>

@@ -1,0 +1,67 @@
+<?php
+
+$magicToolboxHelper = Mage::helper('magiczoomplus/settings');
+//if($magicToolboxHelper->isModuleOutputEnabled()) return;
+
+//$moduleName = $this->getRequest()->getModuleName();         //catalog   review  checkout    catalog     cms     catalogsearch   catalogsearch   wishlist
+//$this->getRequest()->getRouteName()                         //catalog   review  checkout    catalog     cms     catalogsearch   catalogsearch   wishlist
+//$controllerName = $this->getRequest()->getControllerName(); //product   product cart        category    index   result          advanced        index
+//$actionName = $this->getRequest()->getActionName();         //view      list    configure   view        index   index           result          configure
+
+// $productPage = false;
+// if(in_array($controllerName, array('product', 'cart'))) {
+//     $page = 'product';
+//     if($actionName == 'view') {
+//         $productPage = true;
+//     }
+// } else if($controllerName == 'index' && ($actionName == 'configure' || $actionName == 'view')) {
+//     $page = 'product';
+//     if($actionName != 'view') {
+//         //NOTE: if we need this for 'configure' action !?
+//         $productPage = true;
+//     }
+// } else {
+//     $page = 'category';
+// }
+
+$tool = $magicToolboxHelper->loadTool();
+$tool->params->resetProfile();
+
+$force = $tool->params->checkValue('include-headers-on-all-pages', 'Yes', 'default');
+$recentlyViewedProductsBlockEffectEnabled = !$tool->params->checkValue('enable-effect', 'No', 'recentlyviewedproductsblock');
+
+
+$page = $this->getPageType();
+
+
+if($force ||
+   $recentlyViewedProductsBlockEffectEnabled ||
+   ($tool->params->profileExists($page) && !$tool->params->checkValue('enable-effect', 'No', $page))) {
+    echo $tool->getHeadersTemplate(str_replace('/magiczoomplus.js', '', $this->getSkinUrl('js/magiczoomplus.js')), str_replace('/magiczoomplus.css', '', $this->getSkinUrl('css/magiczoomplus/magiczoomplus.css')));
+    if($tool->params->checkValue('magicscroll', 'yes', $page)) {
+        $scroll = $magicToolboxHelper->loadScroll();
+        echo $scroll->getHeadersTemplate(str_replace('/magicscroll.js', '', $this->getSkinUrl('js/magicscroll.js')), str_replace('/magicscroll.css', '', $this->getSkinUrl('css/magiczoomplus/magicscroll.css')));
+    }
+    if($page == 'product' && $this->getRequest()->getModuleName() != 'review') {
+        $current_product = Mage::registry('current_product');
+        if($current_product) {
+            $current_product_id = $current_product->getId();
+        }
+?>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/magictoolbox_utils.js'); ?>"></script>
+<script type="text/javascript">
+    var magicToolboxProductId = <?php echo $current_product_id; ?>;
+    var magicToolboxTool = 'magiczoomplus'; 
+    var magicToolboxOptionTitles = ['<?php echo strtolower(trim(preg_replace('/\s*,\s*/is', '\',\'', $tool->params->getValue('option-associated-with-images', 'product')))); ?>'];
+    var magicToolboxSwitchMetod = '<?php echo strtolower($tool->params->getValue('selectors-change', 'product')); ?>';
+    var magicToolboxMouseoverDelay = <?php echo $tool->params->checkValue('selectors-change', 'mouseover', 'product') ? intval($tool->params->getValue('selectors-mouseover-delay', 'product')) : 0; ?>;
+    var magicAddEvent = 'je1';
+    $mjs(window).je1('load', function() {
+        magicToolboxPrepareOptions();
+    });
+</script>
+<?php
+    }
+}
+
+?>

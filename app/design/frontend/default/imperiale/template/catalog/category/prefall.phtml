@@ -1,0 +1,17 @@
+<?php 
+
+ $sale_count = Mage::getModel('catalog/category')->load(5)->getProductCount();
+    if ($sale_count > 0) : 
+	$category = Mage::getModel('catalog/category')->load(5); 
+	
+	?>
+	<div class="col-xs-12 col-md-12 col-sm-12 perfecto perfecto2 perfecto3 prefall">
+	<a href="<?php echo $category->getUrl() ?>"><img class="img-responsive" src="<?php echo $category->getImageUrl() ?>" /></a>
+	<div class="link1"><span><span class="lin"><?php echo $category->getName(); ?></span><span class="blank">&nbsp;</span></span></div>
+	<div class="link2"><span><span class="lin"><a href="#"><?php echo $this->__('More details') ?></a></span><span class="blank">&nbsp;</span></span></div>
+
+</div>	
+<?php else: ?>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('prod_home')->toHtml(); 
+?> 
+	<?php endif; ?>
