@@ -1978,6 +1978,9 @@ span.weee {
 .std ul li {
     margin-left: 2em;
     }
+.std ul.soc li {
+  margin-left: 0.5em;
+}
 .std .note {
     color: #a0a0a0;
     font-size: 13px;
@@ -3087,8 +3090,7 @@ body {
 /*.cms-page-view{background:url(../images/top.jpg) repeat-x center top}
 .catalog-product-view{background:url(../images/top2.jpg) repeat-x center top}*/
 #header-search #search_mini_form #search { display: none; float: right; width: 55%; height: 29px; }
-#header-search #search_mini_form .search-button::before, #header-search #search_mini_form .search-button {
-    font-size: 22px;
+#header-search #search_mini_form .search-button::before, #header-search #search_mini_form .search-button { background-image: url(../images/loupe2.png); background-repeat: no-repeat; background-position: center center;
     float: right;
     height: auto;
     left: auto;
@@ -3612,7 +3614,7 @@ a.skip-link {
     border: 1px solid #e5e5e5;
     }
 #search_mini_form .search-button {
-    text-decoration:none;
+    text-indent: -9999px;
     position: absolute;
     top: 0;
     right: 0;
@@ -9433,16 +9435,7 @@ div.paypal-logo span > img {
     width: 60%; float: left; text-align: left;
     }
 .header-minicart .item-option {
-    text-align: left; line-height: 24px;margin-bottom: 5px;
-    }
-.header-minicart .qty-minicart{
-    vert-align: top;
-    }
-.header-minicart .col-2-wrapper{
-    max-height: 100px;
-    }
-.header-minicart .edit-option{
-    text-align: left;
+    text-align: left; line-height: 24px;
     }
 .header-minicart .item-option dt, .header-minicart .item-option dd {
     display: inline; text-align: left; font-weight: normal
@@ -9470,7 +9463,6 @@ div.paypal-logo span > img {
     padding-right: 4px;
     text-align: center;
     width: 3em;
-    line-height: 22px !important;
     }
 .header-minicart .info-wrapper .quantity-button {
     display: none;
@@ -10747,9 +10739,8 @@ div.calendar table td.button {
     position: relative;
     top: 0;
     width: auto; }
-.header-respo #header-search #search_mini_form .search-button::before, .header-respo #header-search #search_mini_form .search-button {
-    /*background-image: url(../images/louperespo.jpg); background-position: center center;
-    background-repeat: no-repeat;*/ }
+.header-respo #header-search #search_mini_form .search-button::before, .header-respo #header-search #search_mini_form .search-button { background-image: url(../images/louperespo.jpg); background-position: center center;
+    background-repeat: no-repeat; }
 .msg_resp { display: none }
 .form-language select {
     -webkit-appearance: none;
@@ -10932,7 +10923,7 @@ span .blank {
 .cms-index-index .skip-link .label { color: #000000 }
 .cms-index-index .form-language select { color: #000000 }
 .cms-index-index .header-language-background .cart_qty, .cms-index-index .header-language-background .cart_qty a { color: #000000 }
-.cms-index-index #header-search #search_mini_form .search-button::before, .cms-index-index #header-search #search_mini_form .search-button {  font-size: 18px; }
+.cms-index-index #header-search #search_mini_form .search-button::before, .cms-index-index #header-search #search_mini_form .search-button { background-image: url(../images/loupe2.png) }
 .livraison .link2 { top: 50% }
 .livraison .link2.link3 { top: 57% }
 .yellow, .yellow a { color: #f2dc00 }
@@ -11244,7 +11235,7 @@ span .blank {
     max-width: 92%;
     position: relative;
     }
-.col2-left-layout .main .col-wrapper, .customer-account-login .main .col-main, .customer-account-create .main .col-main, .catalogsearch-result-index .main .col-main{
+.col2-left-layout .main .col-wrapper, .customer-account-login .main .col-main, .customer-account-create .main .col-main{
     float: none;
     margin: 0;
     width: 100%;
@@ -11542,9 +11533,4 @@ span .blank {
     }
 .hugo {
     margin-top: 10%;
-    }
-.header-respo .cartgo{
-    font-size: 22px;
-    color:#000;
-    line-height: 23px;
     }
