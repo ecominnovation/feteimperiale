@@ -1,0 +1,86 @@
+<?php
+
+/**
+ * Magictoolbox product list template for Magento store.
+ * Allow use MagicTools on product list page.
+ * @mail support@magictoolbox.com
+ */
+
+$output_helper = $this->helper('catalog/output');
+
+foreach($_productCollection as $__product) {
+
+    $pid = $__product->getId();
+    $id = $group.'_'.$pid;
+    $_product = Mage::getModel('catalog/product')->load($pid);
+    $_image_file = $_product->getImage();
+
+    if($_image_file && $_image_file != 'no_selection') {
+        $title = $this->htmlEscape($_product->getName());
+        //$description = $this->htmlEscape($_product->getDescription());
+        $description = $this->htmlEscape($output_helper->productAttribute($_product, $_product->getDescription(), 'description'));
+        //$shortDescription = $this->htmlEscape($_product->getShortDescription());
+        $shortDescription = $this->htmlEscape($output_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description'));
+
+        $_small_image_file = $_product->getSmall_image();
+        $img = $this->helper('catalog/image')->init($_product, 'small_image', $_small_image_file)->__toString();
+        $originalSizeArray = $this->helper('catalog/image')->getOriginalSizeArray();
+        if($tool->params->checkValue('square-images', 'Yes')) {
+            $big_image_size = ($originalSizeArray[0] > $originalSizeArray[1]) ? $originalSizeArray[0] : $originalSizeArray[1];
+            $img = $this->helper('catalog/image')->watermark(null, null)->resize($big_image_size)->__toString();
+        }
+        list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('thumb', $originalSizeArray);
+        $thumb = $this->helper('catalog/image')->watermark(null, null)->resize($w, $h)->__toString();
+
+        $link = $tool->params->checkValue('link-to-product-page', 'Yes');
+        if($link) {
+            //NOTE: get URL from $__product (not $_product) object
+            $link = $__product->getProductUrl();
+        } else {
+            $link = '';
+        }
+        if($tool->params->checkValue('disable-expand', 'Yes')) {
+            if($tool->params->checkValue('drag-mode', 'Yes')) { //onclick only if drag mode is disabled
+                $link = '';
+            }
+        }
+
+        $html = $tool->getMainTemplate(compact('id', 'group', 'title', 'description', 'shortDescription', 'img', 'thumb', 'link'));
+
+        if($tool->params->checkValue('show-selectors-on-category-page', 'Yes')) {
+            $gallery = Mage::getModel('catalog/product')->load($pid)->getMediaGalleryImages();
+            $html .= '<div class="MagicToolboxSelectorsContainer">';
+            foreach($gallery  as $_image) {
+                $_image_file = $_image->getFile();
+                $_image_path  = $_image->getPath();
+                $originalSizeArray = getimagesize($_image_path);
+                if($tool->params->checkValue('square-images', 'Yes')) {
+                    $big_image_size = ($originalSizeArray[0] > $originalSizeArray[1]) ? $originalSizeArray[0] : $originalSizeArray[1];
+                    $img = $this->helper('catalog/image')->init($_product, 'small_image', $_image_file)->resize($big_image_size)->__toString();
+                } else {
+                    $img = $this->helper('catalog/image')->init($_product, 'small_image', $_image_file)->__toString();
+                }
+                list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('thumb', $originalSizeArray);
+                $medium = $this->helper('catalog/image')->watermark(null, null)->resize($w, $h)->__toString();
+                list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('selector', $originalSizeArray);
+                $thumb = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image_file)->resize($w, $h)->__toString();
+                $title = $this->htmlEscape($_image->getLabel());
+                $a = $tool->getSelectorTemplate(compact('id', 'img', 'thumb', 'medium', 'title'));
+                $html .= $a;
+            }
+            $html .= '</div>';
+        }
+
+        $html = '<div class="MagicToolboxContainer">' . $html . '</div>';
+        //NOTE: get URL from $__product (not $_product) object
+        $pattern = '<a\b(?!\s+class="MagicZoomPlus")[^>]*?href="'.preg_quote($__product->getProductUrl(), '/').'"[^>]*+>[^<]*+<img\b[^>]*+>[^<]*+<\/a>';
+        $pattern = $pattern.'|<a\b(?!\s+class="MagicZoomPlus")[^>]*+>[^<]*+<img\b[^>]*?src="[^"]*?'.preg_quote($_small_image_file, '/').'"[^>]*+>[^<]*+<\/a>';
+        $pattern = $pattern.'|<a\b(?!\s+class="MagicZoomPlus")[^>]*?href="'.preg_quote($__product->getProductUrl(), '/').'"[^>]*+>[^<]*+<img\b[^>]*+>.*?<\/a>';
+        $pattern = $pattern.'|<a\b(?!\s+class="MagicZoomPlus")[^>]*+>[^<]*+<img\b[^>]*?src="[^"]*?'.preg_quote($_small_image_file, '/').'"[^>]*+>.*?<\/a>';
+        $contents = preg_replace('/'.$pattern.'/is', $html, $contents, 1);
+
+    }
+
+}
+
+?>

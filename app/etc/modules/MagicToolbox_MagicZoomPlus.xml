@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MagicToolbox_MagicZoomPlus>
+            <active>true</active>
+            <codePool>local</codePool>
+        </MagicToolbox_MagicZoomPlus>
+    </modules>
+</config>
