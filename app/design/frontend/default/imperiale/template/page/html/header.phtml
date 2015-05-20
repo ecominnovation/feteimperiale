@@ -27,21 +27,11 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
-<<<<<<< HEAD
 <div class="header-language-background">
 <div class="header-language-background-container">
-        <div class="cart_qty">
+		<div class="cart_qty">
             <div class="account-cart-wrapper">
                 <!-- Cart -->
-=======
-<?php /*<div class="header-language-background2">
-
-		<div class="cart_qty">
-	<div class="account-cart-wrapper">
-                
-
-                <!-- Cart -->
-
                 <div class="header-minicart">
                     <?php echo $this->getChildHtml('minicart_head'); ?>
                 </div>
@@ -56,83 +46,6 @@
 
         <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></p>
     </div>
-
-	<a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>" data-target-element="#header-account" class="skip-link skip-account">
-                    <!--<span class="icon"></span>-->
-                    <span class="label"><?php echo $this->__('S\'identifier'); ?></span>
-                </a>
-									<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalogsearch/form.mini2.phtml')->toHtml(); ?>
-
-		            <a class="" href="<?php echo $this->getUrl('') ?>"><img src="<?php echo $this->getSkinUrl('images/logotop.jpg'); ?>" /></a>
-	
-</div> */ ?>
-
-<div class="header-language-background">
-<div class="header-language-background-container">
-		<div class="cart_qty">
-<?php /*echo $this->__('Panier'); ?> : 
-<?php
-      $count = $this->helper('checkout/cart')->getSummaryCount();  //get total items in cart
-      $total = $this->helper('checkout/cart')->getQuote()->getGrandTotal(); //get total price
-      if($count==0)
-      {
-        echo $this->__('<a href="/checkout/cart" class="cartgo">0</a>',$count);
-      }
-      if($count==1)
-      {
-        echo $this->__('<a href="/checkout/cart" class="cartgo">1</a>',$count);
-      }
-      if($count>1)
-      {
-        echo $this->__('<a href="/checkout/cart" class="cartgo">%s</a>',$count);
-      }
-     // echo $this->__('', $this->helper('core')->formatPrice($total, false));
-    */?>
-	<div class="account-cart-wrapper">
-                
-
-                <!-- Cart -->
-
->>>>>>> 068c400b0e6b05040e286af8f83341e7ec107a10
-                <div class="header-minicart">
-                    <?php echo $this->getChildHtml('minicart_head'); ?>
-                </div>
-            </div>
-<<<<<<< HEAD
-</div>  
-=======
-</div>	
->>>>>>> 068c400b0e6b05040e286af8f83341e7ec107a10
-    <div class="header-language-container">
-        <div class="store-language-container">
-            <?php echo $this->getChildHtml('store_language') ?>
-        </div>
-
-        <?php echo $this->getChildHtml('currency_switcher') ?>
-
-        <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></p>
-    </div>
-<<<<<<< HEAD
-    <a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>" class="skip-account">
-                    <!--<span class="icon"></span>-->
-                    <span class="label"><?php echo $this->__('S\'identifier'); ?></span>
-                </a>
-                <div id="header-search" class="skip-content">
-            <?php echo $this->getChildHtml('topSearch') ?>
-        </div>
-        <?php /*<div class="account-cart-wrapper">
-                <div class="header-minicart">
-                    <?php echo $this->getChildHtml('minicart_head'); ?>
-                </div>
-            </div>*/?>
-    <div class="logotop2"><a class="" href="<?php echo $this->getUrl('') ?>"><img
-                src="<?php echo $this->getSkinUrl('images/logotop.jpg'); ?>"/></a></div>
-</div>
-</div>
-<div class="header-respo">
-<a href="/checkout/cart" style="z-index: 9" class="cartgo skip-link skip-cart" data-target-element=".header-cart"><i
-        class="icon-shop"></i><?php /*<img src="<?php echo $this->getSkinUrl('images/bag.png'); ?>" />*/ ?></a>
-=======
 	<a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>" class="skip-account">
                     <!--<span class="icon"></span>-->
                     <span class="label"><?php echo $this->__('S\'identifier'); ?></span>
@@ -140,21 +53,18 @@
 				<div id="header-search" class="skip-content">
             <?php echo $this->getChildHtml('topSearch') ?>
         </div>
-		<div class="account-cart-wrapper">
-                
-
-                <!-- Cart -->
-
+		<?php /*<div class="account-cart-wrapper">
                 <div class="header-minicart">
                     <?php echo $this->getChildHtml('minicart_head'); ?>
                 </div>
-            </div>
-	<div class="logotop2"><a class="" href="<?php echo $this->getUrl('') ?>"><img src="<?php echo $this->getSkinUrl('images/logotop.jpg'); ?>" /></a></div>
+            </div>*/?>
+	<div class="logotop2"><a class="" href="<?php echo $this->getUrl('') ?>"><img
+                src="<?php echo $this->getSkinUrl('images/logotop.jpg'); ?>"/></a></div>
 </div>
 </div>
 <div class="header-respo">
-<a href="/checkout/cart" style="z-index: 9" class="cartgo skip-link skip-cart" data-target-element=".header-cart" ><img src="<?php echo $this->getSkinUrl('images/bag.png'); ?>" /></a>
->>>>>>> 068c400b0e6b05040e286af8f83341e7ec107a10
+<a href="/checkout/cart" style="z-index: 9" class="cartgo skip-link skip-cart" data-target-element=".header-cart"><i
+        class="icon-shop"></i><?php /*<img src="<?php echo $this->getSkinUrl('images/bag.png'); ?>" />*/ ?></a>
     <div class="header-minicart">
         <?php echo $this->getChildHtml('minicart_head'); ?>
     </div>
@@ -163,19 +73,11 @@
         </div>
 <div id="header-search" class="skip-content">
             <?php echo $this->getChildHtml('topSearch') ?>
-<<<<<<< HEAD
-        </div>      
-</div>
-<header id="header" class="page-header">
-<div class="logotop"> <a class="logo" href="<?php echo $this->getUrl('') ?>">
-            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large"/>
-=======
         </div>		
 </div>
 <header id="header" class="page-header">
 <div class="logotop"> <a class="logo" href="<?php echo $this->getUrl('') ?>">
-            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
->>>>>>> 068c400b0e6b05040e286af8f83341e7ec107a10
+            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large"/>
             <!--<img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" />-->
         </a></div>
 
@@ -183,23 +85,18 @@
        
 
         <?php // In order for the language switcher to display next to logo on smaller viewports, it will be moved here.
-<<<<<<< HEAD
         // See app.js for details
         ?>
-=======
-              // See app.js for details ?>
->>>>>>> 068c400b0e6b05040e286af8f83341e7ec107a10
         <?php /*<div class="store-language-container"></div>*/ ?>
 
         <!-- Skip Links -->
 
         <div class="skip-links">
             <a href="#header-nav" class="skip-link skip-nav">
-<<<<<<< HEAD
                <span class="icon"></span>
                 <span class="label"><?php echo $this->__('Menu'); ?></span>
             </a>
-            <div class=""><a class="" href="<?php echo $this->getUrl('') ?>"><img
+			<div class=""><a class="" href="<?php echo $this->getUrl('') ?>"><img
                         src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>"
                         class="small"/></a></div>
 
@@ -209,42 +106,19 @@
                 <span class="label"><?php echo $this->__('Search'); ?></span>
             </a> */
             ?>
-=======
-                <span class="icon"></span>
-                <span class="label"><?php echo $this->__('Menu'); ?></span>
-            </a>
-			<div class=""><a class="" href="<?php echo $this->getUrl('') ?>"><img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" /></a></div>
-
-
-           <?php /* <a href="#header-search" class="skip-link skip-search">
-                <span class="icon"></span>
-                <span class="label"><?php echo $this->__('Search'); ?></span>
-            </a> */ ?>
-
-            
-
->>>>>>> 068c400b0e6b05040e286af8f83341e7ec107a10
 
         </div>
 
         <!-- Navigation -->
 
         <div id="header-nav" class="skip-content desktop">
-<<<<<<< HEAD
-        <div class="croix_menu"><img src="<?php echo $this->getSkinUrl('images/croix.png'); ?>" alt="" class=""/></div>
-        <div class="respo_small">
-        <li class="re1"><a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>"
+		<div class="croix_menu"><img src="<?php echo $this->getSkinUrl('images/croix.png'); ?>" alt="" class=""/></div>
+		<div class="respo_small">
+		<li class="re1"><a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>"
                            data-target-element="#header-account"
                            class="respolink"><?php echo $this->__('mon compte'); ?></a></li>
-        <li class="re2"><a href="#" class="respolink"><?php echo $this->__('help'); ?></a></li>
- <li class="re3"><?php echo $this->getChildHtml('store_language') ?></li>   
-=======
-		<div class="croix_menu"><img src="<?php echo $this->getSkinUrl('images/croix.png'); ?>" alt="" class="" /></div>
-		<div class="respo_small">
-		<li class="re1"><a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>" data-target-element="#header-account" class="respolink"><?php echo $this->__('mon compte'); ?></a></li>
-		<li class="re2"><a href="#"  class="respolink"><?php echo $this->__('help'); ?></a></li>
+		<li class="re2"><a href="#" class="respolink"><?php echo $this->__('help'); ?></a></li>
  <li class="re3"><?php echo $this->getChildHtml('store_language') ?></li>	
->>>>>>> 068c400b0e6b05040e286af8f83341e7ec107a10
 <li class="re4"><div id="header-search" class="skip-content">
             <?php echo $this->getChildHtml('topSearch') ?>
         </div></li> 
@@ -256,12 +130,8 @@
 
         <?php /*<div id="header-search" class="skip-content">
             <?php echo $this->getChildHtml('topSearch') ?>
-<<<<<<< HEAD
         </div>*/
         ?>
-=======
-        </div>*/ ?>
->>>>>>> 068c400b0e6b05040e286af8f83341e7ec107a10
 
         <!-- Account -->
 

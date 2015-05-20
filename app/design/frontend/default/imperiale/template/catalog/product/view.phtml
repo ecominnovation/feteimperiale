@@ -145,7 +145,7 @@
 <div class="last_details">
 <div class="ship"><?php echo $this->__('Payment & Shipping'); ?></div>
 <div class="more">
-<?php echo $this->__('Livraison standard offerte a partir de 60Eur d\'achat Retours gratuits'); ?>
+<?php echo $this->__('Livraison standard offerte a partir de 60Eur d\'achat:'); ?><br /><?php echo $this->__('Retours gratuits'); ?>
 </div>
 <div class="social">
 <ul class="soc">
@@ -260,7 +260,17 @@ jQuery(".txt_desc .short-description").slideUp( "slow" );
 }
 
 });
-
+jQuery( document ).ready(function() {
+jQuery( "#upsell-product-table li" ).hover(
+  function() {
+    jQuery( this ).children(".detail_upsell").children("h3").css("display","block");
+    jQuery( this ).children(".detail_upsell").children("a").css("display","block");
+  }, function() {
+    jQuery( this ).children(".detail_upsell").children("h3").css("display","none");
+    jQuery( this ).children(".detail_upsell").children("a").css("display","none");
+  }
+);
+});
 </script>
 <script>
 		(function($){

@@ -56,7 +56,7 @@
             });
             jQuery(window).scroll(function () {
                 // the 10 below is the number of pixels down to show the menu
-                if (jQuery(this).scrollTop() > 70) {
+                if (jQuery(this).scrollTop() > 150) {
 
                     jQuery('.header-language-background2').fadeIn();
                     jQuery('#header').addClass("hidd");
@@ -108,7 +108,15 @@
                     jQuery(this).children(".link2").css("display", "none");
                 }
             );
+		/*	jQuery( ".level0" ).hover(
+  function() {
+    jQuery( this ).children("ul").css("display","block");
+  }, function() {
+    jQuery( this ).children("ul").css("display","none");
+  }
+);
 
+*/
         });
 
 

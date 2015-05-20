@@ -56,6 +56,9 @@ body { }
         top: inherit;
         }
     }
+@media (min-width: 1280px) and (max-width: 1400px) {
+.soldes .link2{bottom: 3%;}
+}	
 @media (max-width: 1279px) {
     #header-search #search_mini_form #search {
         height: 25px;
@@ -84,6 +87,12 @@ body { }
         }
 
     @media (max-width: 1024px) {
+	#nav .nav-primary .level0 ul {
+    display: none;
+}
+	#nav .nav-primary .level0.menu-active ul {
+    display: block;
+}
         .header-language-background .header-language-container .store-language-container { margin-top: 11px }
         .small { width: 75% }
         .header-language-background { background: none; }
@@ -530,7 +539,7 @@ body { }
     .footer li .form-language { margin-left: -4px }
     .footer li .form-language option { font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif; font-size: 16px; text-transform: none; text-decoration: none; }
     .header-respo #header-search #search_mini_form #search { border: 1px solid #000000; width: 15%; width: 35%; padding-right: 0; }
-    .header-respo .cartgo { float: right; width: 22px; outline: medium none; }
+    .header-respo .cartgo { float: right; width: 22px; outline: medium none; font-size: 20px; line-height: 36px;}
     .header-respo .cartgo img { margin-top: 3px }
     .page { padding: 0 }
     .detail_upsell .product-name .lin { font-size: 35px }
@@ -717,6 +726,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
         }
     }
 @media (max-width: 447px) {
+    .header-minicart .col-2-wrapper {
+        max-height: none!important;
+        }
     .welcome-msg {
         font-size: 11px;
         }
@@ -1122,11 +1134,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .respo_small .form-language select option { color: #ffffff }
     .respo_small .form-language { margin-left: -5px; }
     .respo_small #header-search { display: block !important; padding: 0; }
-    .respo_small #header-search #search_mini_form #search { display: block; float: left; width: 78%; }
+    .respo_small #header-search #search_mini_form #search { display: block; float: left; width: 69%; }
     .respo_small #header-search #search_mini_form .search-button { display: block }
     .respo_small #header-search #search_mini_form .search-button2 { display: none }
     .respo_small #header-search #search_mini_form #search_autocomplete { display: none }
-    .respo_small #header-search #search_mini_form .input-box { width: 70% }
+    .respo_small #header-search #search_mini_form .input-box { width: 83% }
+	#header-search #search_mini_form .search-button::before, #header-search #search_mini_form .search-button{font-size:16px;color:#fff}
     .re3, .re4 { display: block }
     .hover_look { font-size: 25px }
     .cms-page-view .hover_look ul li { font-size: 17px }
