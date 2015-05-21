@@ -653,7 +653,7 @@ h6, .h6 {
     font-weight: normal;
     }
 .news input {
-    text-align: center;
+    text-align: left;
     font-size: 21px
     }
 .news .button {
@@ -906,10 +906,10 @@ body:not(.customer-account) .block:first-child .block-title {
     /*padding: 7px 15px;*/
     border: 0;
     color: #000000;
-    font-size: 27px;
+    font-size: 15px;
     font-weight: normal;
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
-    line-height: 19px;
+    line-height: 1em;
     text-align: center;
     /*text-transform: uppercase;*/
     vertical-align: middle;
@@ -1124,17 +1124,14 @@ a.button:hover {
  */
 .breadcrumbs {
     overflow: hidden;
-    /*margin: -15px 0 15px;*/
-    margin-bottom: 1%
     }
 .breadcrumbs li {
-    float: left;
     font-size: 12px;
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
     text-transform: uppercase;
+    display: inline;
     }
 .breadcrumbs a {
-    float: left;
     color: #000000;
     }
 .breadcrumbs a:hover {
@@ -1145,7 +1142,6 @@ a.button:hover {
     font-weight: normal;
     }
 .breadcrumbs span {
-    float: left;
     padding: 0 7px;
     }
 @media only screen and (max-width: 770px) {
@@ -3051,55 +3047,54 @@ body {
  * ============================================ */
 .header-language-background {
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
-    font-size: 12px !important;
-    padding: 0 0 0px 0px;
-    position: absolute;
+    font-size: 12px;
     text-transform: uppercase;
-    top: 0;
-    left: 0;
     width: 100%;
     z-index: 999999;
-    background: url(../images/top.jpg) repeat-x center top #ffffff;
+    background: url(../images/top.jpg) no-repeat center top #ffffff;
     position: fixed;
-	background-size:58%
-    }
+}
 .header-language-background .header-language-background-container {
     margin: 0 auto;
     position: relative;
     width: 92%;
     max-width: 1920px;
     font-family: 'FuturaPT-Medium';
+    padding-top: 1em;
     }
-.page { padding-top: 67px; max-width: 1920px; margin: 0 auto }
-.header-language-background .cart_qty { float: right; line-height: 1;
-    padding: 0.2em 0.6em 0.3em;
-    text-align: center;
-    vertical-align: baseline;
+.page {
+    max-width: 1920px;
+    margin: 0 auto
+}
+.header-language-background .cart_qty { 
+    float: right; 
     color: #000000;
-    float: right;
-    line-height: 0;
-    width: 70px;
     }
 .header-language-background .cart_qty a { color: #000000 }
-.header-language-background .header-language-container { float: right; height: 33px; width: 70px; overflow: hidden; margin-right: 15px; font-weight: bold }
-.header-language-background .skip-account { float: right; background:; height: 44px; line-height: 35px; }
-.header-language-background .skip-account .label { font-size: 100%; /*font-weight:normal*/ }
-.header-language-background #header-search { float: right; position: relative; top: 6px }
+.header-language-background .header-language-container { float: right;  overflow: hidden; font-weight: bold }
+.header-language-background .skip-account { float: right; }
+.header-language-background .skip-account .label { 
+    font-size: 100%;
+}
+.header-language-background #header-search { 
+    float: right; 
+    padding-right: 0.5em;
+}
 /*.cms-page-view{background:url(../images/top.jpg) repeat-x center top}
 .catalog-product-view{background:url(../images/top2.jpg) repeat-x center top}*/
-#header-search #search_mini_form #search { display: none; float: right; width: 55%; height: 35px; }
-#header-search #search_mini_form .search-button::before, #header-search #search_mini_form .search-button { /*background-image: url(../images/loupe2.png);*/ background-repeat: no-repeat; background-position: center center;
-    float: right;
-    height: auto;
-    left: auto;
-    margin: 0;
-    position: relative;
-    top: auto;
-    display: none;
-	font-size:18px
-    }
+#header-search #search_mini_form #search { 
+    display: none; 
+    float: right; 
+    margin-right: 2em;
+    width: 90%;
+    height: 36px; 
+    position:relative;
+    top: -9px;
+}
+#header-search #search_mini_form .search-button::before, #header-search #search_mini_form .search-button { 
+    background: none;
+}
 #header-search #search_mini_form .search-button2 { display: block }
-#search_mini_form { margin-top: 3px }
 /*.header-language-background .header-language-container {
   max-width: 1200px;
   margin-left: auto;
@@ -3166,7 +3161,7 @@ body {
     display: block;
     }
 .logo .large {
-    display: inline;
+    margin-top:3.5em;
     }
 .logo:hover {
     /* opacity: 0.8;*/
@@ -3208,10 +3203,9 @@ body {
     position: relative;
     float: left;
     width: 20%;
-    height: 44px;
+    height: 25px;
     background: #ffffff;
     color: #636363;
-    line-height: 36px;
     text-align: center;
     }
 a.skip-link {
@@ -3306,11 +3300,6 @@ a.skip-link {
         background-color: #f4f4f4;
         text-decoration: none;
         }
-    }
-.account-cart-wrapper {
-    position: absolute;
-    top: 0px;
-    right: 30px;
     }
 @media only screen and (max-width: 770px) {
     .account-cart-wrapper {
@@ -3581,18 +3570,10 @@ a.skip-link {
 /* ============================================ *
  * Search - Skip Content
  * ============================================ */
-#header-search {
-    padding: 20px;
-    }
+
 @media only screen and (min-width: 771px) {
     #header-search {
         display: block;
-        position: absolute;
-        top: 55px;
-        right: 0;
-        width: 25%;
-        height: 35px;
-        padding: 0;
         }
     }
 /* ============================================ *
@@ -3608,9 +3589,8 @@ a.skip-link {
 #search {
     width: 100%;
     height: 40px;
-    padding-right: 40px;
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
-    border: 1px solid #000000;
+    border: 1px solid #e5e5e5;
     }
 #search_mini_form .search-button {
    /* text-indent: -9999px;*/
@@ -3618,8 +3598,6 @@ a.skip-link {
     position: absolute;
     top: 0;
     right: 0;
-    width: 40px;
-    height: 40px;
     border: 0;
     background: none;
     }
@@ -3655,11 +3633,8 @@ a.skip-link {
     }
 @media only screen and (min-width: 771px) {
     .skip-account {
-        float: none;
-        width: auto;
-        vertical-align: top;
         display: inline-block;
-        padding: 0 10px;
+        padding-right: 1em;
         text-transform: uppercase;
         }
     #header-account.skip-active {
@@ -3713,10 +3688,6 @@ a.skip-link {
 @media only screen and (min-width: 771px) {
     .skip-cart {
         width: auto;
-        padding: 0 0 0 10px;
-        }
-    .skip-cart.no-count{
-        padding: 0 10px 0 10px;
         }
     #header-cart.skip-active {
         background: none repeat scroll 0 0 #f6f4f3;
@@ -5763,10 +5734,15 @@ div.titre span .blank { height: 51%; }
 .size-box .size {
     display: none;
     background: #ffffff;
-    width: 162px;
     position: absolute;
     right: 0;
     top: 30px;
+    }
+.size-box .size, .size-box .click {
+    width: 190px
+    }
+.size-box .click {
+display: block;
     }
 .footer .right_footer { float: right }
 .footer .right_footer li { padding-left: 17%;
@@ -9271,12 +9247,14 @@ div.paypal-logo span > img {
  * ============================================ */
 .header-minicart {
     display: inline-block;
+
     }
 .header-minicart .icon {
     display: none;
     }
 .header-minicart .label {
     font-size: 100%;
+    padding: 0;
     }
 .header-minicart .label {
     font-weight: bold;
@@ -10668,7 +10646,7 @@ div.calendar table td.button {
     font-family: FuturaPT-Book;
     }
 .breadcrumbs ul {
-    margin: 0 auto
+    text-align: center;
     }
 .size .super-attribute-select, .color .super-attribute-select { display: none }
 .footer-center {
@@ -10749,7 +10727,7 @@ div.calendar table td.button {
     border: 0;
     background: url(../images/langue.png) center right no-repeat;
     color: #000000;
-    padding-right: 20px;
+    padding-right: 1.5em;
     font-size: 12px;
     text-transform: uppercase;
     cursor: pointer;
@@ -10764,7 +10742,9 @@ div.calendar table td.button {
     /*text-transform: none;*/
     background: url("../images/langue.jpg") no-repeat center right
     }
-.header-language-background .header-language-container .store-language-container { margin-top: 9px }
+.header-language-background .header-language-container .store-language-container { 
+    margin-top: 9px
+}
 .form-language select option { color: #000000; background: none }
 .header-language-background2 {
     background: none repeat scroll 0 0 #ffffff;
@@ -10887,6 +10867,9 @@ span .blank {
 .soldes .link2 { top: auto; bottom: 8% }
 .perfecto .link1 { font-size: 64px }
 .perfecto .link2 { top: 45% }
+.link1 a:hover, .link2 a:hover{
+    text-decoration: none;
+    }
 .link2 .blank {
     bottom: 0;
     height: 36%;
@@ -10923,7 +10906,7 @@ span .blank {
 .cms-index-index .skip-link .label { color: #000000 }
 .cms-index-index .form-language select { color: #000000 }
 .cms-index-index .header-language-background .cart_qty, .cms-index-index .header-language-background .cart_qty a { color: #000000 }
-.cms-index-index #header-search #search_mini_form .search-button::before, .cms-index-index #header-search #search_mini_form .search-button { font-size: 18px;}
+.cms-index-index #header-search #search_mini_form .search-button::before, .cms-index-index #header-search #search_mini_form .search-button { font-size: 15px;}
 .livraison .link2 { top: 50% }
 .livraison .link2.link3 { top: 57% }
 .yellow, .yellow a { color: #f2dc00 }
@@ -11176,7 +11159,7 @@ span .blank {
 .cms-page-view .skip-link .label { color: #000000; font-weight: bold; /*display:none*/ }
 .cms-page-view .form-language select { color: #000000 }
 .cms-page-view .header-language-background .cart_qty, .cms-index-index .header-language-background .cart_qty a { color: #000000 }
-.cms-page-view #header-search #search_mini_form .search-button::before, .cms-page-view #header-search #search_mini_form .search-button { font-size: 18px; /*background-image: url(../images/loupe2.png) */ }
+.cms-page-view #header-search #search_mini_form .search-button::before, .cms-page-view #header-search #search_mini_form .search-button { font-size: 15px; /*background-image: url(../images/loupe2.png) */ }
 .look { margin-top: 10 pw; margin-bottom: 10px; text-align: center; cursor: pointer }
 .look .link1 { font-size: 42px; top: 40%; }
 .look .link2 { font-size: 22px; top: 53% }
@@ -11541,5 +11524,14 @@ line-height: 23px;
 }	
 #upsell-product-table .detail_upsell h3{display:none}
 #upsell-product-table .detail_upsell a{display:none}
- #nav .nav-primary .level0 ul.hide{display:none}
-  #nav .nav-primary .level0 ul.show{display:bock}
+#nav .nav-primary .level0 ul.hide{display:none}
+#nav .nav-primary .level0 ul.show{display:bock}
+#nav .nav-primary .level0 ul {
+    display: none;
+    }
+#nav .nav-primary .level0:hover ul {
+    display: block;
+    }
+#nav .nav-primary .level0.menu-active ul {
+    display: block;
+    }

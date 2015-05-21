@@ -38,19 +38,20 @@
             </div>
 </div>	
     <div class="header-language-container">
-        <div class="store-language-container">
+
             <?php echo $this->getChildHtml('store_language') ?>
-        </div>
 
         <?php echo $this->getChildHtml('currency_switcher') ?>
 
-        <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></p>
+        
     </div>
-	<a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>" class="skip-account">
+    <div class="header-account">
+        <a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>" class="skip-account">
                     <!--<span class="icon"></span>-->
                     <span class="label"><?php echo $this->__('S\'identifier'); ?></span>
-                </a>
-				<div id="header-search" class="skip-content">
+        </a>
+    </div>
+		<div id="header-search" class="skip-content">
             <?php echo $this->getChildHtml('topSearch') ?>
         </div>
 		<?php /*<div class="account-cart-wrapper">
