@@ -68,30 +68,3 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
     </script>
 <?php endif;?>
 
-<script>
-jQuery(".click").click(function(){
-if(jQuery(".size-box .size").css("display")=="none"){
-
-jQuery(".size").slideDown();
-}else{
-jQuery(".size").slideUp();
-}
-});
-jQuery(".size").click(function(){
-jQuery(this).slideUp() ;
-jQuery(".click .lin").html(jQuery(".swatch-span.current").html());
-});
-
-jQuery( document ).ready(function() {
-jQuery(".add-to-cart-buttons .button").click(function(){
-setTimeout(function() {
-var element = jQuery(".input-box1 .validation-advice");
-if(element.length){
-jQuery(".input-box1 .validation-advice").prependTo(".validation-size");
-}else{
-jQuery(".validation-size").css("display","none");
-}
-}, 500);
-});
-});
-</script>

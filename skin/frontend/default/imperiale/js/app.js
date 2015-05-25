@@ -1198,14 +1198,62 @@ $j(document).ready(function () {
     // ==============================================
     // Toggle menu mobile and tablet 
     // ==============================================
-
+    // code Chebbi
     $j(".croix_menu").click(function(){
         $j(".skip-link").removeClass("skip-active");
         $j(".skip-content").removeClass("skip-active");
         $j("body").removeClass("nav-open");
         $j(".header-respo").removeClass("nav-open-2");
         $j('body').css('overflow','auto');
+    });
+    // code Chebbi
 
+    // ==============================================
+    // Popin Add to cart 
+    // ==============================================
+
+    // code Chebbi
+    jQuery(".click").click(function(){
+    if(jQuery(".size-box .size").css("display")=="none"){
+
+    jQuery(".size").slideDown();
+    }else{
+    jQuery(".size").slideUp();
+    }
+    });
+    jQuery(".size").click(function(){
+    jQuery(this).slideUp() ;
+    jQuery(".click .lin").html(jQuery(".swatch-span.current").html());
+    });
+
+    jQuery(".add-to-cart-buttons .button").click(function(){
+    setTimeout(function() {
+        var element = jQuery(".input-box1 .validation-advice");
+        if(element.length) {
+            jQuery(".input-box1 .validation-advice").prependTo(".validation-size");
+        }else {
+            jQuery(".validation-size").css("display","none");
+        }
+        }, 500);
+    });
+    // fin code Chebbi
+
+    $j('button.btn-cart').bind('click', function(e){
+        var element = jQuery(".input-box1 .validation-advice");
+        if(element.length) {
+            e.preventDefault();
+            $j(".product-add-to-cart, .ajax-loader ").remove();
+            $j('.center-prod').append('<div class="ajax-loader"></div>');
+            $j('.center-prod').append('<div class="product-add-to-cart"><div class="croix"><img src="http://127.0.0.1:8888/feteimperiale/skin/frontend/default/imperiale/images/croix5.png"></div><p>Votre article a bien été ajouté au panier</p><div/>');
+            $j(".ajax-loader").fadeIn("slow");
+            setTimeout(function() {
+                $j(".ajax-loader ").remove();
+                $j(".product-add-to-cart").fadeIn("slow");
+            }, 1000);
+        }
+        $j(".croix").bind('click', function(){
+            $j(".product-add-to-cart").fadeOut("slow");
+        });
     });
 
 });

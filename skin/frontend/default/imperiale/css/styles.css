@@ -11522,3 +11522,52 @@ line-height: 23px;
 .col-sm-12, .col-md-12, .col-lg-12 {
     padding: 0;
 }
+/* END Overwrite Boostrap*/
+
+.center-prod .ajax-loader{
+    background: url("../images/cgv.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #ffffff;
+    display: none;
+    height: auto;
+    left: 50%;
+    margin-left: -310px;
+    margin-top: -200px;
+    padding: 23px;
+    position: absolute;
+    top: 50%;
+    width: 602px;
+    z-index: 99999;
+}
+
+.center-prod .product-add-to-cart {
+    position: absolute;
+    top: 50%;
+    display: none;
+    background: url(../images/cgv.png);
+    }
+.center-prod .product-add-to-cart {
+    background: url("../images/cgv.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #ffffff;
+    display: none;
+    height: auto;
+    left: 50%;
+    margin-left: -310px;
+    margin-top: -200px;
+    padding: 23px;
+    position: absolute;
+    top: 50%;
+    width: 602px;
+    z-index: 99999;
+    text-align: center;
+    font-family: "FuturaPT-Book";
+}
+
+.center-prod .product-add-to-cart p {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    width: 282px;
+    margin: auto;
+    padding-bottom: 1em;
+    letter-spacing: 0.1em;
+}
