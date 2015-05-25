@@ -1393,6 +1393,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .product-details .edit-option {
         display: none;
     }
+    .soc li {
+        display: inline-block;
+        zoom: 1;
+        margin-right: 0.2em;
+        font-size: 0.6em;
+    }
 }
 
 @media only screen and (min-width : 375px) and (max-width : 667px) {
@@ -1499,6 +1505,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
    .page-header-container #header-nav {
         overflow-y: auto;
         max-height: 100%;
+    }
+    .soc li {
+        display: inline-block;
+        zoom: 1;
+        margin-right: 0.2em;
+        font-size: 0.6em;
     }
 }
 
