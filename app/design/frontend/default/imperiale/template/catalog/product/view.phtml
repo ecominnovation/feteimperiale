@@ -171,8 +171,34 @@
         <script type="text/javascript">
         //<![CDATA[
             var productAddToCartForm = new VarienForm('product_addtocart_form');
-            productAddToCartForm.submit = function(button, url) {
-                if (this.validator.validate()) {
+            productAddToCartForm.submit = function(button, url) {  
+
+                if (this.validator.validate()) {                
+                    jQuery(".product-add-to-cart, .ajax-loader ").remove();
+                    jQuery('.center-prod').append('<div class="ajax-loader"></div>');
+                
+                    jQuery('.center-prod').append('<div class="product-add-to-cart"><div class="croix"><img src="/skin/frontend/default/imperiale/images/croix5.png"></div><p>Votre article a bien été ajouté au panier</p><div/>');
+
+                    jQuery(".ajax-loader").fadeIn("slow");
+                                
+                    jQuery.post( 
+                        this.form.action, 
+                        jQuery(this.form).serialize(),
+                        function( result ) {   
+                            console.log(result);                          
+                            if (result) {
+                                jQuery(".ajax-loader ").remove();
+                                jQuery(".product-add-to-cart").fadeIn("slow");
+                            }
+                        }
+                    );
+                    
+                    jQuery(document).on('click', '.croix', function(){
+                        jQuery(".product-add-to-cart").fadeOut("slow");
+                    });
+                    
+                    return false;
+                    
                     var form = this.form;
                     var oldUrl = form.action;
 

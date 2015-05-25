@@ -1237,25 +1237,6 @@ $j(document).ready(function () {
         }, 500);
     });
     // fin code Chebbi
-
-    $j('button.btn-cart').bind('click', function(e){
-        var element = jQuery(".input-box1 .validation-advice");
-        if(element.length) {
-            e.preventDefault();
-            $j(".product-add-to-cart, .ajax-loader ").remove();
-            $j('.center-prod').append('<div class="ajax-loader"></div>');
-            $j('.center-prod').append('<div class="product-add-to-cart"><div class="croix"><img src="http://127.0.0.1:8888/feteimperiale/skin/frontend/default/imperiale/images/croix5.png"></div><p>Votre article a bien été ajouté au panier</p><div/>');
-            $j(".ajax-loader").fadeIn("slow");
-            setTimeout(function() {
-                $j(".ajax-loader ").remove();
-                $j(".product-add-to-cart").fadeIn("slow");
-            }, 1000);
-        }
-        $j(".croix").bind('click', function(){
-            $j(".product-add-to-cart").fadeOut("slow");
-        });
-    });
-
 });
 
 // ==============================================
