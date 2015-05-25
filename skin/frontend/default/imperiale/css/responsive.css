@@ -1263,6 +1263,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
         height: 36px;
         width: 36px;
     }
+    .page-header {
+        padding: 7em 0 0;
+    }
+    .center-prod .product-add-to-cart, .center-prod .ajax-loader {
+        top: auto;
+        width: auto;
+    }
 }
 
 @media only screen and (min-width : 1024px) {
