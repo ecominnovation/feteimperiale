@@ -28,7 +28,7 @@
     <div class="block-title">
         <strong><span><?php echo $this->__('Newsletter') ?></span></strong>
     </div>
-    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="fake-newsletter-validate-detail">
         <div class="block-content">
             <div class="form-subscribe-header">
                 <label for="newsletter"><?php echo $this->__('Sign up to receive news about') ?><br /><?php echo  $this->__('Fete Imperiale collections, events and sales.') ?></label>
@@ -37,7 +37,7 @@
                <input type="email" placeholder="<?php echo $this->__('Enter your email here'); ?>" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" />
             </div>
             <div class="actions">
-                <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+                <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="subscribe-newsletter button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
             </div>
         </div>
     </form>
@@ -46,4 +46,48 @@
         var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
     //]]>
     </script>
+</div>
+<div class="hidden-form subscribe-nwl-form">
+    <div class="close">
+        <img src="/skin/frontend/default/imperiale/images/croix5.png">
+    </div>
+    <p class="subs-nwl-form-pretitle">
+            Sign up to receive news about Fête impériale collections, events and sales!
+    </p>
+    <p class="subs-nwl-form-title">Inscription à la newsletter</p>
+    <form action="" method="post" id="newsletter-validate-detail" name="subscription-newsletter">
+        <div class="subs-nwl-gender-male">
+            <input type="radio" value="man" name="fi-nwl-gender" id="fi-nwl-gender" />
+            <label>Homme</label>
+        </div>
+        <div class="subs-nwl-gender-female">
+            <input type="radio" value="woman" name="fi-nwl-gender" id="fi-nwl-gender" />
+            <label>Femme</label>
+        </div>
+        <div class="subs-nwl-firstname">
+            <label for="fi-nwl-firstname"><sup>*</sup> Prénom</label>
+            <input required type="text" id="fi-nwl-firstname" name="fi-nwl-firstname" />
+        </div>
+        <div class="subs-nwl-lastname">
+            <label for="fi-nwl-lastname"><sup>*</sup> Nom</label>
+            <input required type="text" id="fi-nwl-lastname" name="fi-nwl-lastname"/>
+        </div>
+        <div class="subs-nwl-dob">
+            <label for="fi-nwl-dob"><sup>*</sup> Date de naissance</label>
+            <input required maxlength="2" type="text" id="fi-nwl-dob-day" name="fi-nwl-dob-day" />
+            <input required maxlength="2" type="text" id="fi-nwl-dob-month" name="fi-nwl-dob-month" />
+            <input required maxlength="4" type="text" id="fi-nwl-dob-year" name="fi-nwl-dob-year" />
+        </div>
+        <div class="subs-nwl-email">
+            <label for="fi-nwl-email"><sup>*</sup> Adresse e-mail</label>
+            <input required type="email" id="fi-nwl-email" name="fi-nwl-email" />
+        </div>
+        <div class="subs-nwl-emailconfirm">
+            <label for="fi-nwl-emailconfirm"><sup>*</sup> Confirmer<br/>l'adresse e-mail</label>
+            <input required type="email" id="fi-nwl-emailconfirm" name="fi-nwl-emailconfirm" />
+        </div>
+        <div class="submit-nwl-form">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
 </div>

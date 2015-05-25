@@ -1237,6 +1237,17 @@ $j(document).ready(function () {
         }, 500);
     });
     // fin code Chebbi
+
+    // ==============================================
+    // Popin Newsletter
+    // ==============================================
+    $j('.subscribe-newsletter').bind('click', function(e){
+        e.preventDefault();
+        $j('.hidden-form').fadeIn('slow');
+    });
+    $j('.close').bind('click', function(e){
+        $j('.hidden-form').fadeOut('slow');
+    });
 });
 
 // ==============================================
