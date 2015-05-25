@@ -1254,6 +1254,15 @@ and (-webkit-min-device-pixel-ratio: 2) {
     header .page-header-container .skip-links {
         top: 1.45em;
     }
+    .soc li {
+        margin-right: 0.1em;
+        font-size: 0.8em;
+    }
+    .follow .soc li a {
+        font-size: 0.5em;
+        height: 36px;
+        width: 36px;
+    }
 }
 
 @media only screen and (min-width : 1024px) {
@@ -1262,6 +1271,15 @@ and (-webkit-min-device-pixel-ratio: 2) {
     }
     header .page-header-container .skip-links {
         top: 2.2em;
+    }
+    .soc li {
+        margin-right: 0.1em;
+        font-size: 0.8em;
+    }
+    .follow .soc li a {
+        font-size: 0.5em;
+        height: 31px;
+        width: 50px;
     }
 }
 

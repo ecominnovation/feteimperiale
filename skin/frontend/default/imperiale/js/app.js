@@ -1253,7 +1253,7 @@ $j(document).ready(function () {
             $j('.validate-email').before('<p class="error">Adresse email non valide</p>');
         }
     });
-    $j('.close').bind('click', function(e){
+    $j('.close-form').bind('click', function(e){
         $j('.hidden-form').fadeOut('slow');
     });
 });
