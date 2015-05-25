@@ -79,7 +79,7 @@
                  <action method="addItem"><type>skin_css</type><name>css/normalize.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
                 <action method="addItem"><type>skin_css</type><name>css/styles.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
 				<action method="addItem"><type>skin_css</type><name>css/social-retina.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
-				<action method="addItem"><type>skin_css</type><name>css/andepict.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
+				<action method="addItem"><type>skin_css</type><name>css/font-awesome.min.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
 				<action method="addItem"><type>skin_css</type><name>css/responsive.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
 
                 <action method="addItem"><type>skin_css</type><name>css/madisonisland.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>

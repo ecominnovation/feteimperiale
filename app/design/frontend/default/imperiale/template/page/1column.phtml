@@ -44,92 +44,6 @@
 <?php echo $this->getChildHtml('head') ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl(); ?>css/bootstrap.css" media="all" />
 <script type="text/javascript" src="<?php echo $this->getSkinUrl(); ?>js/bootstrap.js"></script>
-<script>
-jQuery( document ).ready(function() {
-jQuery(".page-header-container .skip-content")
-    .clone().prependTo(".col-main .skip-content");
-	
-jQuery(".croix_menu").click(function(){
-jQuery(".skip-link").removeClass("skip-active");
-jQuery(".skip-content").removeClass("skip-active");
-jQuery("body").removeClass("nav-open");
-jQuery(".header-respo").removeClass("nav-open-2");
-});
- jQuery(window).scroll(function() {
-        // the 10 below is the number of pixels down to show the menu
-        if (jQuery(this).scrollTop() > 150) {
-		
-		jQuery('.header-language-background2').fadeIn();
-				 		jQuery('.logotop2 img').fadeIn( "slow", function() {
-   jQuery('.logotop2 img').css("display","inline");
-  });
-         jQuery('#header').addClass("hidd");
-	/*jQuery("#header-nav.desktop").addClass("scroll");*/
-		}else{
-         jQuery('.header-language-background2').fadeOut();
-		 		jQuery('.logotop2 img').fadeOut();
-
-         jQuery('#header').removeClass("hidd");
-	/*jQuery("#header-nav.desktop").removeClass("scroll");*/
-		 }
-    });
-	
-jQuery(".skip-link.skip-nav").click(function(){
-
-if(jQuery("#header-nav").is(".skip-active")){
-jQuery("body").addClass("nav-open");
-jQuery(".header-respo").addClass("nav-open-2");
-}else{
-jQuery("body").removeClass("nav-open");
-jQuery(".header-respo").removeClass("nav-open-2");
-}
-});	
-
-
-/*jQuery( ".look" ).hover(
-  function() {
-    jQuery( this ).children(".hover_look").fadeIn();
-  }, function() {
-    jQuery( this ).children(".hover_look").fadeOut();
-  }
-);*/
-jQuery( ".look" ).click(function(){
-
-if(jQuery(this).children(".hover_look").css("display")=="none"){
-
-jQuery( this ).children(".hover_look").fadeIn();
-}else{
-jQuery( this ).children(".hover_look").fadeOut();
-}
-
-});
-
-
-jQuery( ".perfecto2" ).hover(
-  function() {
-    jQuery( this ).children(".link1").css("display","block");
-    jQuery( this ).children(".link2").css("display","block");
-  }, function() {
-    jQuery( this ).children(".link1").css("display","none");
-    jQuery( this ).children(".link2").css("display","none");
-  }
-);
-
-
-/*
-jQuery( ".level0" ).hover(
-  function() {
-    jQuery( this ).children("ul").css("display","block");
-  }, function() {
-    jQuery( this ).children("ul").css("display","none");
-  }
-);
-*/
-
-	});
-	
-	
-</script>
 
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
@@ -143,9 +57,6 @@ jQuery( ".level0" ).hover(
             <div class="main">
                 <?php echo $this->getChildHtml('breadcrumbs') ?>
                 <div class="col-main">
-				<div id="header-nav" class="skip-content">
-            <?php echo $this->getChildHtml('topMenu') ?>
-        </div>
                     <?php echo $this->getChildHtml('global_messages') ?>
                     <?php echo $this->getChildHtml('content') ?>
                 </div>

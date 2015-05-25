@@ -3025,20 +3025,19 @@ body {
  * ============================================ */
 @media only screen and (min-width: 771px) {
     .page-header {
-        max-width: 1260px;
         margin: 0 auto;
-        padding: 0 30px;
         }
     .page-header-container {
         position: relative;
-        display: none
         }
     }
 .header-language-container,
 .page-header {
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
     }
-.page-header-container #header-nav { /*display:none*/ }
+.page-header-container #header-nav { 
+    margin-left: 3.5em;
+}
 /* ============================================ *
  * Language switcher + welcome message
  * ============================================ */
@@ -3050,14 +3049,14 @@ body {
     z-index: 999999;
     background: url(../images/top.jpg) no-repeat center top #ffffff;
     position: fixed;
+    padding-bottom: 1em;
 }
 .header-language-background .header-language-background-container {
     margin: 0 auto;
     position: relative;
-    width: 92%;
     max-width: 1920px;
     font-family: 'FuturaPT-Medium';
-    padding-top: 1em;
+    padding: 1em 4em;
     }
 .page {
     max-width: 1920px;
@@ -3133,26 +3132,15 @@ body {
 .header-language-background a {
     /* color: #e6e6e6;*/
     }
-@media only screen and (max-width: 770px) {
-    .header-language-background {
-        display: none;
-        }
-    }
 /* ============================================ *
  * Logo
  * ============================================ */
 .logo {
-    display: block;
-    /*float: left;*/
-    width: 40%;
-    min-width: 100px;
-    min-height: 44px;
-    text-align: center;
-    padding: 10px;
-    margin: 0 auto
+
     }
 .logo img {
-    max-width: 100%;
+    max-width: 40%;
+    margin-bottom: 2em;
     }
 .logo .small {
     display: block;
@@ -3164,8 +3152,30 @@ body {
     /* opacity: 0.8;*/
     }
 .logotop { clear: both; text-align: center }
-.logotop2 { clear: both; text-align: center; width: 390px; margin: 0 auto }
-.logotop2 a img { display: none }
+.logotop2 {
+    display: none;
+    transition:0.5s;
+    margin: 1em auto 0.5em;
+    padding-top: 1.5em;
+    opacity: 0;
+}
+.logotop2 .toggle-menu {
+    position: relative;
+    top: 2em;
+    font-size: 1.35em;
+}
+.logotop2 .toggle-menu span {
+    cursor:pointer;
+}
+.logotop2 .toggle-menu img {
+    display: inline-block;
+    position:relative;
+    top:-2px;
+    left: 5px;
+}
+.logotop2 img {
+    margin: auto;
+}
 .footer-container .logotop .logo img { display: inline }
 @media only screen and (min-width: 771px) {
     .logo {
@@ -3196,20 +3206,8 @@ body {
 /* -------------------------------------------- *
  * Skip - Link
  */
-.skip-link {
-    position: relative;
-    float: left;
-    width: 20%;
-    height: 25px;
-    background: #ffffff;
-    color: #636363;
-    text-align: center;
-    }
 a.skip-link {
     text-decoration: none;
-    }
-.skip-link:not(.skip-active):hover {
-    opacity: 0.8;
     }
 @media only screen and (max-width: 770px) {
     .skip-link {
@@ -3217,11 +3215,6 @@ a.skip-link {
         }
     .skip-link:last-child {
         border-right: 0;
-        }
-    }
-@media only screen and (min-width: 500px) {
-    .skip-link {
-        width: 25%;
         }
     }
 /* -------------------------------------------- *
@@ -3244,10 +3237,6 @@ a.skip-link {
     width: 30px;
     height: 30px;
     vertical-align: middle;
-    }
-.skip-link.skip-nav .icon,
-.skip-link.skip-cart:not(.no-count) .icon {
-    margin-right: 3px;
     }
 @media only screen and (min-width: 500px) {
     .skip-link .icon {
@@ -3306,25 +3295,14 @@ a.skip-link {
 /* ============================================ *
  * Nav - Skip Link
  * ============================================ */
-.skip-nav {
-    width: 40%;
-    }
 .skip-nav:not(.skip-active):hover {
     text-decoration: none;
     }
-.skip-nav:not(.skip-active):hover .icon {
-    background-position: -46px 4px;
-    }
 .skip-nav .label {
-    display: inline;
+    display: none;
     }
 .skip-nav .icon {
-    background-position: 4px 4px;
-    }
-@media only screen and (min-width: 500px) {
-    .skip-nav {
-        width: 8%;
-        }
+    background-position: 12px -668px;
     }
 @media only screen and (min-width: 1025px) {
     .skip-nav {
@@ -3337,6 +3315,7 @@ a.skip-link {
 @media only screen and (max-width: 770px) {
     #header-nav {
         padding: 5px 0;
+        margin-left: 0;
         }
     }
 @media only screen and (min-width: 1025px) {
@@ -3346,12 +3325,8 @@ a.skip-link {
     }
 @media only screen and (min-width: 771px) {
     #header-nav {
-        /*display: block;*/
-        left: 4%;
         position: absolute;
         z-index: 9999;
-        width: 35%;
-        width: 38%;
         }
     .col-left #header-nav, .customer-account-login #header-nav, .customer-account-create #header-nav {
         left: 0%;
@@ -3365,9 +3340,6 @@ a.skip-link {
         padding-top: 20px;
         text-align: center;
         }
-    .catalog-product-view #header-nav, .cms-livraison #header-nav {
-        left: 1%;
-        }
     #header-nav #header-nav {
         left: 0%;
         padding-left: 2px;
@@ -3378,25 +3350,37 @@ a.skip-link {
  * ============================================ */
 @media only screen and (min-width: 771px) {
     .nav-primary {
-        display: block;
-        margin-top: 15px;
         }
     }
 /* ============================================ *
  * General Navigation Styles
  * ============================================ */
+#nav {
+    transition:0.5s;
+    padding-top: 1.5em;
+    opacity: 1;
+}
+#nav.show-nav {
+    opacity: 1;
+}
+#nav.hide-nav {
+    opacity: 0;
+}
+#nav .nav-top-border {
+    width: 1.2em;
+    border-top: 2px solid black;
+    margin-bottom: 1.4em;
+}
 .nav-primary a {
     text-decoration: none;
     position: relative;
     /* display: block;*/
     color: #000000;
-    line-height: 17px;
-    font-size: 16px;
+    font-size: 1.1em;
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
     text-transform: capitalize !important;
     background: #ffffff
     }
-#header-nav .skip-content #nav ol { padding-top: 10%; background: url(../images/trait-men.png) 6px 0 no-repeat; }
 .nav-primary a span {
     background: #ffffff;
     text-transform: none;
@@ -3404,7 +3388,7 @@ a.skip-link {
     }
 .nav-primary li {
     position: relative;
-    margin-bottom: 5%
+    margin-bottom: 0.9em;
     }
 .nav-primary li.level1 a {
     border-bottom: 1px solid #cccccc;
@@ -3593,7 +3577,7 @@ a.skip-link {
    /* text-indent: -9999px;*/
    text-decoration:none;
     position: absolute;
-    top: 0;
+    top: -1px;
     right: 0;
     border: 0;
     background: none;
@@ -3676,11 +3660,8 @@ a.skip-link {
 /* -------------------------------------------- *
  * Skip Link - Cart
  */
-.skip-cart:not(.skip-active):hover .icon {
-    background-position: -50px -95px;
-    }
 .skip-cart .icon {
-    background-position: 0px -95px;
+    background-position: 0px -706px;
     }
 @media only screen and (min-width: 771px) {
     .skip-cart {
@@ -9361,7 +9342,7 @@ div.paypal-logo span > img {
     padding-top: 0px;
     }
 .header-minicart .mini-products-list li {
-    padding: 8px 0 8px 0;
+    padding: 3em 0 1em 0;
     margin: 0 5px 0 11px;
     border-bottom: 1px solid #333333;
     position: relative;

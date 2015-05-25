@@ -31,9 +31,8 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
 <form id="search_mini_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
     <div class="input-box">
         <label for="search"><?php echo $this->__('Search:') ?></label>
-        <button type="submit" title="<?php echo $this->__('Search') ?>" class="button search-button"><i class="icon-search"></i></button>
         <input id="search" type="search" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" class="searchinput input-text required-entry" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" placeholder="<?php //echo $this->__('Search entire store here...') ?>" />
-        <button type="button" title="<?php echo $this->__('Search') ?>" class="button search-button search-button2"><i class="icon-search"></i></button>
+        <button type="submit" title="<?php echo $this->__('Search') ?>" class="button search-button"><i class="fa fa-search"></i></button>
    </div>
 
     <div id="search_autocomplete" class="search-autocomplete"></div>
@@ -44,14 +43,3 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
     //]]>
     </script>
 </form>
-<script>
-jQuery(".search-button2").click(function(){
-jQuery(".button.search-button").css("display","block");
-jQuery("#search").fadeIn();
-jQuery(".header-language-background #header-search #search_mini_form .searchinput").fadeIn();
-jQuery(".header-respo #header-search #search_mini_form .searchinput").fadeIn();
-jQuery(".search-button3").css("display","none");
-jQuery(this).css("display","none");
-
-});
-</script>

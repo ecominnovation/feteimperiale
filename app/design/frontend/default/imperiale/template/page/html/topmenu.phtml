@@ -34,7 +34,8 @@
 <?php $_menu = $this->getHtml('level-top') ?>
 
 <?php if($_menu): ?>
-    <nav id="nav">
+    <nav id="nav" class="hide-nav">
+    	<div class="nav-top-border"></div>
         <ol class="nav-primary">
             <?php echo $_menu ?>
 			<li class='logo-responsive'><img src="<?php echo $this->getSkinUrl('images/logo-menu2.png'); ?>" /></li>

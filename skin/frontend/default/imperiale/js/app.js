@@ -701,7 +701,6 @@ $j(document).ready(function () {
 
     skipLinks.on('click', function (e) {
         e.preventDefault();
-
         var self = $j(this);
         // Use the data-target-element attribute, if it exists. Fall back to href.
         var target = self.attr('data-target-element') ? self.attr('data-target-element') : self.attr('href');
@@ -1144,6 +1143,71 @@ $j(document).ready(function () {
             $j(window).trigger('delayed-resize', e);
         }, 250);
     });
+
+    // ==============================================
+    // Toggle Navigation on scrolling
+    // ==============================================
+    if ($j(window).width() > 1024) {
+        setTimeout(function() {
+            var navTopPos = $j('#nav').offset().top;
+            var initialScrollTopPos = $j(document).scrollTop() + 104;
+            if(initialScrollTopPos > navTopPos) {
+                $j('#nav').offset({top:initialScrollTopPos});
+                $j('.logotop2').show();
+                $j('.logotop2').css('opacity','1');
+            } else if (initialScrollTopPos < navTopPos) {
+                 $j('#nav').removeClass('hide-nav');
+            }
+            $j(window).scroll(function(){
+                var fixedHeaderHeight = $j('.header-language-background').height();
+                var scrollTopPos = $j(document).scrollTop() + fixedHeaderHeight;
+                if(scrollTopPos < navTopPos) {
+                    $j('#nav').offset({top:navTopPos});
+                    $j('#nav').addClass('show-nav').removeClass('hide-nav');
+                    $j('.logotop2').hide()
+                } else if(scrollTopPos > navTopPos) {
+                    $j('#nav').removeClass('show-nav').addClass('hide-nav');
+                    $j('.logotop2').show();
+                    $j('.logotop2').css('opacity','1');
+                    $j('#nav').offset({top:scrollTopPos});
+                }
+            });
+        },500);
+        $j('.toggle-menu span').bind('click', function() {
+            $j('#nav').toggleClass('hide-nav');
+        });
+    }
+
+    // ==============================================
+    // Top Searchbar toggle 
+    // ==============================================
+
+    $j("#header-search").mouseenter(function(){
+        $j("#search").fadeIn();
+    }).mouseleave(function(){
+        $j("#search").fadeOut();
+    });
+
+    $j('.skip-nav').click(function(){
+        if ($j(window).width() < 1024){
+            $j('#nav').addClass('show-nav').removeClass('hide-nav');
+            $j('body').css('overflow','hidden');
+        }
+    });
+
+    // ==============================================
+    // Toggle menu mobile and tablet 
+    // ==============================================
+
+    $j(".croix_menu").click(function(){
+        $j(".skip-link").removeClass("skip-active");
+        $j(".skip-content").removeClass("skip-active");
+        $j("body").removeClass("nav-open");
+        $j(".header-respo").removeClass("nav-open-2");
+        $j('body').css('overflow','auto');
+
+    });
+
 });
 
 // ==============================================

@@ -51,7 +51,7 @@
                     <span class="label"><?php echo $this->__('S\'identifier'); ?></span>
         </a>
     </div>
-		<div id="header-search" class="skip-content">
+		<div id="header-search" class="">
             <?php echo $this->getChildHtml('topSearch') ?>
         </div>
 		<?php /*<div class="account-cart-wrapper">
@@ -59,9 +59,16 @@
                     <?php echo $this->getChildHtml('minicart_head'); ?>
                 </div>
             </div>*/?>
-	<div class="logotop2"><a class="" href="<?php echo $this->getUrl('') ?>"><img
-                src="<?php echo $this->getSkinUrl('images/logotop.jpg'); ?>"/></a></div>
-</div>
+	<div class="logotop2">
+        <div class="toggle-menu">
+            <span>Menu</span>
+            <span><img src="<?php echo $this->getSkinUrl('images/chevron-light-down.png'); ?>"></span>
+        </div>
+        <a class="" href="<?php echo $this->getUrl('') ?>">
+            <img src="<?php echo $this->getSkinUrl('images/logotop2.png'); ?>"/>
+        </a>
+    </div>
+    </div>
 </div>
 <div class="header-respo">
 <a href="/checkout/cart" style="z-index: 9" class="cartgo skip-link skip-cart" data-target-element=".header-cart"><i
@@ -97,11 +104,6 @@
                <span class="icon"></span>
                 <span class="label"><?php echo $this->__('Menu'); ?></span>
             </a>
-			<div class=""><a class="" href="<?php echo $this->getUrl('') ?>"><img
-                        src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>"
-                        class="small"/></a></div>
-
-
             <?php /* <a href="#header-search" class="skip-link skip-search">
                 <span class="icon"></span>
                 <span class="label"><?php echo $this->__('Search'); ?></span>
@@ -120,7 +122,7 @@
                            class="respolink"><?php echo $this->__('mon compte'); ?></a></li>
 		<li class="re2"><a href="#" class="respolink"><?php echo $this->__('help'); ?></a></li>
  <li class="re3"><?php echo $this->getChildHtml('store_language') ?></li>	
-<li class="re4"><div id="header-search" class="skip-content">
+<li class="re4"><div id="header-search" class="">
             <?php echo $this->getChildHtml('topSearch') ?>
         </div></li> 
  </div>
@@ -129,7 +131,7 @@
 
         <!-- Search -->
 
-        <?php /*<div id="header-search" class="skip-content">
+        <?php /*<div id="header-search" class="">
             <?php echo $this->getChildHtml('topSearch') ?>
         </div>*/
         ?>
