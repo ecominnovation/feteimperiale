@@ -225,7 +225,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
              */
             if (!$product) {
                 // Ajax addToCart
-                $json['code'] = 500;
+                $json['code'] = 404;
                 $json['msg'] = 'productNotAvailable';
 
                 if ($this->getRequest()->isXmlHttpRequest()) {
