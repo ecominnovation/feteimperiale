@@ -11537,6 +11537,7 @@ line-height: 23px;
     top: 50%;
     width: 602px;
     z-index: 99999;
+    text-align: center;
 }
 
 .center-prod .product-add-to-cart {
@@ -11544,13 +11545,11 @@ line-height: 23px;
     color: #ffffff;
     display: none;
     height: auto;
-    left: 50%;
-    margin-left: -310px;
-    margin-top: -200px;
     padding: 23px;
-    position: absolute;
-    top: 50%;
+    position: relative;
+    top: -39em;
     width: 602px;
+    margin: auto;
     z-index: 99999;
     text-align: center;
     font-family: "FuturaPT-Book";
@@ -11562,8 +11561,15 @@ line-height: 23px;
     border-bottom-width: 2px;
     width: 282px;
     margin: auto;
-    padding-bottom: 1em;
+    padding:0 4em 1em;
     letter-spacing: 0.1em;
+}
+.center-prod .product-add-to-cart .go-to-checkout {
+    font-size: 1.3em;
+    color: white;
+    text-decoration: underline;
+    margin-top: 1em;
+    display: inline-block;
 }
 
 .subscribe-nwl-form {
