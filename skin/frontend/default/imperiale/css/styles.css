@@ -2102,32 +2102,27 @@ span.weee {
 .pager .pages {
     margin-bottom: 5px;
     }
-.pages {
-    float: right;
-    overflow: hidden;
-    margin-right: 15px;
+.pages ol {
+    text-align: right;
     }
 .pages strong {
     display: none;
     }
 .pages li {
-    float: left;
+    display: inline-block;
+    margin-right: 1em;
     }
 .pages a,
 .pages .current {
     border: 0 none;
     color: #000000;
-    display: inline-block;
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
     font-size: 20px;
-    height: 30px;
-    line-height: 30px;
     padding: 0;
     text-align: center;
     text-transform: uppercase;
     vertical-align: middle;
     white-space: nowrap;
-    width: 25px;
     }
 .toolbar-top {
     width: 92%;
@@ -2158,8 +2153,6 @@ span.weee {
 .pages .current:hover {
     color: #000000;
     cursor: default;
-    font-weight: bold;
-    width: 30px;
     }
 .pages .next,
 .pages .previous {
@@ -9325,19 +9318,7 @@ div.paypal-logo span > img {
     margin-bottom: 0px;
     }
 .header-minicart .block-subtitle .close {
-    color: #000000 !important;
-    display: block;
-    float: right;
-    font-size: 43px;
-    font-weight: normal;
-    opacity: 1 !important;
-    position: absolute;
-    right: -3px;
-    text-decoration: none;
-    top: -5px;
-    width: 40px;
-    z-index: 9;
-    outline: medium none;
+    display: none;
     }
 .header-minicart .mini-products-list {
     padding: 10px 10px 0 10px;
@@ -10632,7 +10613,11 @@ div.calendar table td.button {
     width: 100%;
     }
 .detail_upsell .product-name { font-size: 40px; color: #000000 }
-.detail_upsell a span { font-size: 20px; color: #000000 }
+.detail_upsell a span { 
+    font-size: 20px; 
+    color: #000000;
+    font-family: "FuturaPT-Book";
+}
 .last_details {
     float: right;
     width: 60%;
@@ -10989,14 +10974,15 @@ span .blank {
 .magazines-articles .prev{ background: url('../images/prev.png') right top no-repeat;
     height: 55px;
     left: 2%;
-    position: absolute;
-    top: 14%;
-    width: 30px;}
+    position: fixed;
+    top: 50%;
+    width: 30px;
+    }
 .magazines-articles .next{background: url('../images/next.png') left top no-repeat;
     height: 58px;
     right: 2%;
-    position: absolute;
-    top: 14%;
+    position: fixed;
+    top: 50%;
     width: 30px;}
 .magazines-articles .prev a, .magazines-articles .next a{display: block;height: 100%;width: 100%;}
 .magazines-articles .prev a:hover, .magazines-articles .next a:hover{text-decoration: none}
@@ -11160,6 +11146,9 @@ span .blank {
 .cms-page-view .hover_look .share2 ul li { background: none }
 #header-nav.scroll { top: 15%; }
 .perfecto2 .link1, .perfecto2 .link2 { display: none }
+.perfecto2:hover .link1, .perfecto2:hover .link2{
+    display: block;
+}
 .product-essential .slideshow-container { display: none }
 .hidd .logotop { visibility: hidden }
 .prefall .link1 { color: #0081ff }
