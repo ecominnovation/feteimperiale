@@ -63,6 +63,7 @@
                 <action method="addItem"><type>skin_js</type><name>js/lib/matchMedia.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/matchMedia.addListener.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/enquire.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/jquery.remodal.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/app.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/jquery.cycle2.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/jquery.cycle2.swipe.min.js</name></action>
@@ -84,6 +85,7 @@
 				<action method="addItem"><type>skin_css</type><name>css/responsive.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
 
                 <action method="addItem"><type>skin_css</type><name>css/madisonisland.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
+                <action method="addItem"><type>skin_css</type><name>css/jquery.remodal.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
 
                 <!-- Sets viewport meta tag using text block -->
                 <block type="core/text" name="head.viewport">

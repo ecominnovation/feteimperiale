@@ -4046,7 +4046,7 @@ p.product-name {
     margin-bottom: 0.5em;
     color: #636363;
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
-    font-size: 24px;
+    font-size: 1.28em;
     font-weight: 400;
     font-style: normal;
     line-height: 1.2;
@@ -4055,7 +4055,6 @@ p.product-name {
     font-size: 13px;
     font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
     font-weight: normal;
-    line-height: 1.4;
     }
 h2.product-name a,
 h3.product-name a,
@@ -4063,7 +4062,15 @@ h4.product-name a,
 h5.product-name a,
 p.product-name a {
     color: #636363;
+    position: relative;
     }
+h2.product-name a span.lin,
+h3.product-name a span.lin,
+h4.product-name a span.lin,
+h5.product-name a span.lin,
+p.product-name a span.lin {
+    white-space: nowrap;
+}
 h2.product-name a:hover,
 h3.product-name a:hover,
 h4.product-name a:hover,
@@ -5680,7 +5687,7 @@ span .blank, div .blank {
     height: 40%;
     left: 0;
     position: absolute !important;
-    width: 100%;
+    width: 103%;
     z-index: 1;
     }
 span .lin, div .lin { z-index: 2; position: relative }
@@ -6321,7 +6328,7 @@ table.size-table td {
     display: none;
     }
 .cart-table .product-cart-sku {
-    font-family: Georgia, Times, "Times New Roman", serif;
+    font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
     font-style: italic;
     font-size: 12px;
     margin: 5px 0 12px;
@@ -10619,10 +10626,6 @@ div.calendar table td.button {
     color: #000000;
     font-family: "FuturaPT-Book";
 }
-.last_details {
-    float: right;
-    width: 60%;
-    }
 .social img {
     display: inline;
     margin-top: 8%;
@@ -11249,14 +11252,24 @@ span .blank {
     }
 .col-right .checkout-review-table .btn-update {
     font-size: 14px;
+    display: none;
     }
 .col-right .checkout-review-table .product-cart-actions {
     width: 50%; float: left;
     font-family: "FuturaPT-Book","Helvetica Neue",Verdana,Arial,sans-serif;
     }
 .col-right .checkout-review-table .product-cart-total {
-    width: 50%; float: right; text-align: right; font-size: 21px;
+    width: 50%;
+    float: right;
+    text-align: right;
+    font-size: 21px;
+    line-height: 1em;
     }
+.col-right .checkout-review-table .product-cart-total .inc-tva {
+    font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
+    font-size: 0.6em;
+    display: inline-block;
+}
 .col-right .checkout-review-table .product-cart-info {
     padding-right: 10px;
     }
@@ -11516,29 +11529,21 @@ line-height: 23px;
 }
 /* END Overwrite Boostrap*/
 
-.center-prod .product-add-to-cart {
-    background: url("../images/cgv.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
-    color: #ffffff;
-    display: none;
-    height: auto;
-    margin-top: 10em;
-    left: 15em;
-    padding: 2em;
-    position: absolute;
-    z-index: 99999;
-    width: 602px;
-    text-align: center;
-    font-family: "FuturaPT-Book";
-}
-
-.center-prod .product-add-to-cart p {
-    border-color: rgba(255, 255, 255, 0.3);
+.remodal[data-remodal-id="addtocart"] p {
+    border-color: rgba(255, 255, 255, 1);
     border-bottom-style: solid;
     border-bottom-width: 2px;
     width: 282px;
-    margin: auto;
-    padding:0 4em 1em;
+    margin: 1em auto;
+    padding:0 3em 1em;
     letter-spacing: 0.1em;
+}
+.remodal[data-remodal-id="addtocart"] a {
+    color: white;
+    font-size: 1.5em;
+}
+.remodal[data-remodal-id="addtocart"] a.go-to-checkout {
+    text-decoration: underline;
 }
 .center-prod .product-add-to-cart .go-to-checkout {
     font-size: 1.3em;
@@ -11549,22 +11554,11 @@ line-height: 23px;
 }
 
 .subscribe-nwl-form {
-    background: url("../images/cgv.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
-    color: #ffffff;
-    display: none;
-    height: auto;
-    margin-top: -200px;
-    padding: 5em;
-    position: absolute;
-    top: 50%;
-    width: 92%;
-    z-index: 99999;
-    font-family: "FuturaPT-Book";
-    right: 54%;
+
 }
 .subscribe-nwl-form form {
     position: relative;
-    left: -5em;
+    left: -3em;
 }
 .subscribe-nwl-form form div {
     margin-bottom:1em;
@@ -11581,6 +11575,8 @@ line-height: 23px;
     font-size: 18px;
     text-align: right;
     width: 27%;
+    padding-right: 0.5em;
+    vertical-align: middle;
 }
 .subscribe-nwl-form form input#fi-nwl-dob-day,
 .subscribe-nwl-form form input#fi-nwl-dob-month,
@@ -11589,7 +11585,7 @@ line-height: 23px;
 }
 .subs-nwl-gender-male, .subs-nwl-gender-female {
     display: inline-block;
-    margin: 1em 2em 1em 4em;
+    margin: 1em 0.7em 1em 4em;
 }
 .subscribe-nwl-form  p.subs-nwl-form-title {
     text-decoration: underline;
@@ -11597,7 +11593,7 @@ line-height: 23px;
 }
 .subscribe-nwl-form  p {
     font-size: 1.5em;
-    width: 50%;
+    width: 67%;
     margin: auto;
 }
 .submit-nwl-form button {

@@ -2,22 +2,16 @@
     $_product = $this->getProduct();
     $_helper = $this->helper('catalog/output');
 ?>
-
+<div class="remodal" data-remodal-id="addtocart">
+            <p>Votre article a bien été ajouté au panier</p>
+            <a class="go-to-checkout" title="<?php echo $this->__('Go to checkout') ?>" class="button checkout-button" href="<?php echo $this->getCheckoutUrl() ?>">
+                <?php echo $this->__('Check out') ?>
+            </a>
+</div>
+<div class="remodal" data-remodal-id="cgv">
+    <div class="content-cgv"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cgv')->toHtml(); ?></div>
+    </div>
 <div class="center-prod">	
-				<div class="cgv">
-				<div class="croix"><img src="<?php echo $this->getSkinUrl('images/croix5.png') ?>" /></div>
-				<div class="content-cgv"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cgv')->toHtml(); ?></div>
-				</div>
-                <div class="product-add-to-cart">
-                    <div class="croix">
-                        <div class="croix"><img src="<?php echo $this->getSkinUrl('images/croix5.png') ?>" /></div>
-                    </div>
-                    <p>Votre article a bien été ajouté au panier</p>
-                
-                    <a class="go-to-checkout" title="<?php echo $this->__('Go to checkout') ?>" class="button checkout-button" href="<?php echo $this->getCheckoutUrl() ?>">
-                        <?php echo $this->__('Checkout') ?>
-                    </a>
-                </div>
 <?php
 
 $magicToolboxHelper = Mage::helper('magiczoomplus/settings');

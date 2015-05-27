@@ -64,7 +64,10 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 
         <h2 class="product-name">
         <?php if ($this->hasProductUrl()):?>
-            <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
+            <a href="<?php echo $this->getProductUrl() ?>">
+                <span class="lin" ><?php echo $this->escapeHtml($this->getProductName()) ?></span>
+                <span class="blank"></span>
+            </a></span>
         <?php else: ?>
             <?php echo $this->escapeHtml($this->getProductName()) ?>
         <?php endif; ?>
@@ -230,6 +233,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <?php endif; ?>
 
         </span>
+        <span class="inc-tva"><?php echo $this->__('inc. VAT'); ?></span>
         <?php if (Mage::helper('weee')->getApplied($_item)): ?>
 
             <div class="cart-tax-info" id="esubtotal-item-tax-details<?php echo $_item->getId(); ?>" style="display:none;">
@@ -274,7 +278,6 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                     <?php echo $this->helper('checkout')->formatPrice($_incl-$_item->getWeeeTaxRowDisposition()) ?>
                 <?php endif; ?>
             <?php endif; ?>
-
         </span>
 
 
@@ -305,7 +308,8 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     </div>
     <?php endif; ?>
         <div class="product-cart-actions" data-rwd-label="<?php echo $this->__('Qty'); ?>">
-       <span><?php echo $this->__('Quantity :'); ?></span> <input type="text" pattern="\d*" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
+       <span><?php echo $this->__('Quantity:'); ?> <span class="decrement-qty"><</span><span class="final-qty"></span></span><span class="increment-qty">></span></span> 
+       <input type="hidden" pattern="\d*" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
 <br/>
         <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update'); ?></span></span>
         </button>

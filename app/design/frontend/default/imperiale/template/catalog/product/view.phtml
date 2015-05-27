@@ -143,7 +143,7 @@
 				
             </div>
 <div class="last_details">
-<div class="ship"><?php echo $this->__('Payment & Shipping'); ?></div>
+<a href="#cgv" class="ship"><?php echo $this->__('Payment & Shipping'); ?></a>
 <div class="more">
 <?php echo $this->__('Livraison standard offerte a partir de 60Eur d\'achat:'); ?><br /><?php echo $this->__('Retours gratuits'); ?>
 </div>
@@ -180,7 +180,7 @@
                         function( result ) {   
                             console.log(result);                          
                             if (result) {
-                                jQuery(".product-add-to-cart").fadeIn("slow");
+                                $j('[data-remodal-id=addtocart]').remodal().open();
                             }
                         }
                     );
