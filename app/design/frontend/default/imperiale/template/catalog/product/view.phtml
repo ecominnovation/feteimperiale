@@ -174,20 +174,12 @@
             productAddToCartForm.submit = function(button, url) {  
 
                 if (this.validator.validate()) {                
-                    jQuery(".product-add-to-cart, .ajax-loader ").remove();
-                    jQuery('.center-prod').append('<div class="ajax-loader"><img src="/skin/frontend/default/imperiale/images/ajax-loader.gif"></div>');
-                
-                    jQuery('.center-prod').append('<div class="product-add-to-cart"><div class="croix"><img src="/skin/frontend/default/imperiale/images/croix.png"></div><p>Votre article a bien été ajouté au panier</p><div/><a class="go-to-checkout" href="/index.php/checkout/onepage">Check out</a>');
-
-                    jQuery(".ajax-loader").fadeIn("slow");
-                                
                     jQuery.post( 
                         this.form.action, 
                         jQuery(this.form).serialize(),
                         function( result ) {   
                             console.log(result);                          
                             if (result) {
-                                jQuery(".ajax-loader ").remove();
                                 jQuery(".product-add-to-cart").fadeIn("slow");
                             }
                         }

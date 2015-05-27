@@ -1241,21 +1241,23 @@ $j(document).ready(function () {
     // ==============================================
     // Popin Newsletter
     // ==============================================
-    $j('.subscribe-newsletter').bind('click', function(e){
-        e.preventDefault();
-        var emailAddress = $j('.validate-email').val();
-        var emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-        if((emailAddress != "") && (emailRegex.test(emailAddress))) {
-            $j('.hidden-form').fadeIn('slow');
-            $j('#fi-nwl-email').val(emailAddress);
-        } else {
-            $j('.error').remove();
-            $j('.validate-email').before('<p class="error">Adresse email non valide</p>');
-        }
-    });
-    $j('.close-form').bind('click', function(e){
-        $j('.hidden-form').fadeOut('slow');
-    });
+    if ($j(window).width() > 1023) {
+        $j('.subscribe-newsletter').bind('click', function(e){
+            e.preventDefault();
+            var emailAddress = $j('.validate-email').first().val();
+            var emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            if((emailAddress != "") && (emailRegex.test(emailAddress))) {
+                $j('.hidden-form').first().fadeIn('slow');
+                $j('#fi-nwl-email').val(emailAddress);
+            } else {
+                $j('.error').remove();
+                $j('.validate-email').first().before('<p class="error">Adresse email non valide</p>');
+            }
+        });
+        $j('.close-form').bind('click', function(e){
+            $j('.hidden-form').fadeOut('slow');
+        });
+    }
 });
 
 // ==============================================

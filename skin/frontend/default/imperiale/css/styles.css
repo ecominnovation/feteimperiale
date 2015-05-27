@@ -9358,6 +9358,7 @@ div.paypal-logo span > img {
     }
 .header-minicart .inc-tva {
     text-align: right;
+    white-space: nowrap;
     }
 .header-minicart .qty-wrapper {
     width: 60%; float: left; text-align: left;
@@ -11515,33 +11516,17 @@ line-height: 23px;
 }
 /* END Overwrite Boostrap*/
 
-.center-prod .ajax-loader{
-    background: url("../images/cgv.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
-    color: #ffffff;
-    display: none;
-    height: auto;
-    left: 50%;
-    margin-left: -310px;
-    margin-top: -200px;
-    padding: 23px;
-    position: absolute;
-    top: 50%;
-    width: 602px;
-    z-index: 99999;
-    text-align: center;
-}
-
 .center-prod .product-add-to-cart {
     background: url("../images/cgv.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: #ffffff;
     display: none;
     height: auto;
-    padding: 23px;
-    position: relative;
-    top: -39em;
-    width: 602px;
-    margin: auto;
+    margin-top: 10em;
+    left: 15em;
+    padding: 2em;
+    position: absolute;
     z-index: 99999;
+    width: 602px;
     text-align: center;
     font-family: "FuturaPT-Book";
 }
@@ -11589,6 +11574,7 @@ line-height: 23px;
     color: black;
     padding:1em 0;
     border:1px solid #818181;
+    padding-left: 0.5em;
 }
 .subscribe-nwl-form label {
     color: white;
@@ -11599,7 +11585,7 @@ line-height: 23px;
 .subscribe-nwl-form form input#fi-nwl-dob-day,
 .subscribe-nwl-form form input#fi-nwl-dob-month,
 .subscribe-nwl-form form input#fi-nwl-dob-year {
-    width: 5.7em;
+    width: 16.2%;
 }
 .subs-nwl-gender-male, .subs-nwl-gender-female {
     display: inline-block;
@@ -11621,5 +11607,11 @@ line-height: 23px;
     font-size: 1.3em;
     letter-spacing: 0.1em;
     position: relative;
-    left: -1.3em;
+    left: -2em;
+}
+.subscribe-nwl-form .close-form img {
+    display: inline-block;
+}
+.subscribe-nwl-form .close-form {
+    text-align: right;
 }
