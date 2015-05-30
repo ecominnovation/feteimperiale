@@ -127,6 +127,32 @@ Minicart.prototype = {
         }
     },
 
+    updateCart: function() {
+        var cart = this;
+
+        cart.hideMessage();
+        cart.showOverlay();
+
+        $j.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: '/checkout/cart/updatecart',
+        }).done(function(result) {
+            cart.hideOverlay();
+            if (result.success) {
+                cart.updateCartQty(result.qty);
+                cart.updateContentOnUpdate(result);
+            } else {
+                cart.showMessage(result);
+            }            
+        }).error(function() {
+            cart.hideOverlay();
+            cart.showError(cart.defaultErrorMessage);
+        });
+
+        return false;
+    },
+    
     updateItem: function(el) {
         var cart = this;
         var input = $j(this.selectors.quantityInputPrefix + $j(el).data('item-id'));

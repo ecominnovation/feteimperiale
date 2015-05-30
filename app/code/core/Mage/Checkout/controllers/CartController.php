@@ -182,6 +182,24 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
         Varien_Profiler::stop(__METHOD__ . 'cart_display');
     }
 
+    public function updatecartAction()
+    {
+        try {
+            $cart = $this->_getCart();        
+
+            $this->loadLayout();
+            $result['content'] = $this->getLayout()->getBlock('minicart_content')->toHtml();
+            $result['qty'] = $this->_getCart()->getSummaryQty();
+            
+            $result['success'] = 1;
+        } catch (Exception $e) {
+            $result['success'] = 0;
+        }
+
+        $this->getResponse()->setHeader('Content-type', 'application/json');
+        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+    }
+
     /**
      * Add product to shopping cart action
      *
@@ -190,12 +208,6 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
      */
     public function addAction()
     {
-        $cart = new Mage_Checkout_Model_Cart();
-        
-
-        //header('Content-Type: application/json');
-        //echo json_encode(); exit; 
-
         $json = array();
         $json['locale'] = Mage::app()->getLocale()->getLocaleCode();
 
@@ -207,8 +219,6 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             $json['msg']  = 'formNotValid';
 
             if ($this->getRequest()->isXmlHttpRequest()) {
-                $cart->init();
-                $json['cart'] = $cart->getItems()->getData();
                 header('Content-Type: application/json');
                 echo json_encode($json); exit; 
             }
@@ -237,8 +247,6 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
                 $json['msg'] = 'productNotAvailable';
 
                 if ($this->getRequest()->isXmlHttpRequest()) {
-                    $cart->init();
-                    $json['cart'] = $cart->getItems()->getData();
                     header('Content-Type: application/json');
                     echo json_encode($json); exit;
                 }
@@ -273,8 +281,6 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
                     $json['msg'] = 'productAddedToCart';
 
                     if ($this->getRequest()->isXmlHttpRequest()) {
-                        $cart->init();
-                        $json['cart'] = $cart->getItems()->getData();
                         header('Content-Type: application/json');
                         echo json_encode($json); exit;
                     }
@@ -285,9 +291,6 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
                 $json['msg'] = 'cannotAddProductToCart';
 
                 if ($this->getRequest()->isXmlHttpRequest()) {
-                    $cart->init();
-                    $json['cart'] = $cart->getItems()->getData();
-
                     header('Content-Type: application/json');
                     echo json_encode($json); exit;
                 }
@@ -300,9 +303,6 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             $json['msg'] = 'cannotAddProductToCart';
 
             if ($this->getRequest()->isXmlHttpRequest()) {
-                $cart->init();
-                $json['cart'] = $cart->getItems()->getData();
-
                 header('Content-Type: application/json');
                 echo json_encode($json); exit; 
             }
@@ -312,9 +312,6 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             $json['msg'] = 'cannotAddProductToCart';
 
             if ($this->getRequest()->isXmlHttpRequest()) {
-                $cart->init();
-                $json['cart'] = $cart->getItems()->getData();
-
                 header('Content-Type: application/json');
                 echo json_encode($json); exit; 
             }
@@ -340,9 +337,6 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             $json['msg'] = 'cannotAddProductToCart';
 
             if ($this->getRequest()->isXmlHttpRequest()) {
-                $cart->init();
-                $json['cart'] = $cart->getItems()->getData();
-                
                 header('Content-Type: application/json');
                 echo json_encode($json); exit; 
             }
