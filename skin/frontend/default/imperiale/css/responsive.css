@@ -1187,6 +1187,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
         left: 4.5em;
         visibility: visible;
         width: auto;
+        background: transparent;
    }
    .logotop2 .toggle-menu {
         display: none;
@@ -1327,11 +1328,12 @@ and (-webkit-min-device-pixel-ratio: 2) {
    .logotop2 {
         margin: 0;
         padding: 0;
-        top: 1.25em;
+        top: 1.35em;
         opacity: 1;
         left: 3.2em;
         visibility: visible;
         width: auto;
+        background: transparent;
    }
    .logotop2 a {
         width: auto;
@@ -1342,7 +1344,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
    }
    .logotop2 img {
         margin: 0;
-        max-width: 80%;
+        max-width: 72%;
+   }
+   .logotop2 h1 {
+    display: inline;
    }
    #page-header .logotop {
         display: none;
@@ -1363,8 +1368,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
    .header-minicart .icon {
         display: block;
         position: relative;
-        top: 1.5em;
-        left: 4em;
+        top: -0.2em;
+        left: 7em;
    }
    .header-language-background .account-cart-wrapper #header-cart {
         position: absolute;
@@ -1463,18 +1468,23 @@ and (-webkit-min-device-pixel-ratio: 2) {
         float:left;
         margin: 0;
         padding: 0;
-        position: relative;
-        top: -0.95em;
+        position: fixed;
+        top: 1.35em;
         display: block;
         opacity: 1;
-        left: -0.5em;
+        left: 2.5em;
+        visibility: visible;
+        background: transparent;
    }
    .logotop2 .toggle-menu {
         display: none;
    }
    .logotop2 img {
         margin: 0;
-        max-width: 90%;
+        max-width: 72%;
+   }
+   .logotop2 h1 {
+    display: inline;
    }
    #page-header .logotop {
         display: none;
@@ -1482,6 +1492,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
    .header-language-background {
         background: white;
         position: fixed;
+        top: 0;
    }
    body.cms-home .main-container {
         padding-top: 4em;
@@ -1495,8 +1506,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
    .header-minicart .icon {
         display: block;
         position: relative;
-        top: 1.8em;
-        left: 3em;
+        top: -0.2em;
+        left: 7em;
    }
    .header-language-background .account-cart-wrapper #header-cart {
         position: absolute;
