@@ -131,7 +131,7 @@ Minicart.prototype = {
         var cart = this,
             path = Mage.Cookies.path,
             basePath  = (path === '/') ? '' : path,
-            url = basePath + '/checkout/cart/updatecart';        
+            url = basePath + '/index.php/checkout/cart/updatecart';        
 
         cart.hideMessage();
         cart.showOverlay();
