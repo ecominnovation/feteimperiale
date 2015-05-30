@@ -1,6 +1,5 @@
 @media (max-width: 1560px) {
     #search_mini_form #search_autocomplete { display: none }
-    .catalog-product-view #header-nav, .cms-livraison #header-nav { left: 1%; }
     .left-prod { left: 16%; top: 10%; width: 30%; }
     .right-prod { right: 5%; width: 30%; }
     .back_product .link2 { top: 57% }
@@ -87,7 +86,6 @@
         .header-language-background .header-language-container .store-language-container { margin-top: 11px }
         .small { width: 75% }
         .header-language-background { background: none; }
-        .logotop2 { display: none }
         .catalog-product-view #header-nav, .cms-livraison #header-nav { left: 0 }
         .share2 li { margin: 0 14%; }
         .cms-page-view .hover_look ul li img { max-width: 20px; max-height: 20px; }
@@ -1163,9 +1161,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .header-respo {
         display: none;
     }
-    .header-language-background .header-language-background-container {
-        padding: 3.5em 4em 4em;
-    }
     .page-header-container #header-nav {
         margin-left: 0;
         padding: 0 5em;
@@ -1183,14 +1178,15 @@ and (-webkit-min-device-pixel-ratio: 2) {
         width: 241px;
     }
    .logotop2 {
-        float:left;
         margin: 0;
         padding: 0;
-        position: relative;
-        top: -1em;
+        position: fixed;
+        top: 1em;
         display: block;
         opacity: 1;
-        left: 4em;
+        left: 4.5em;
+        visibility: visible;
+        width: auto;
    }
    .logotop2 .toggle-menu {
         display: none;
@@ -1243,11 +1239,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
 }
 
 @media only screen and (min-width : 768px) {
-    .header-language-background .header-language-background-container {
-        padding: 3.5em 1em 4em;
-    }
     header .page-header-container .skip-links {
-        top: 2.2em;
+        top: 1em;
     }
     .soc li {
         margin-right: 0.1em;
@@ -1284,9 +1277,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .logotop {
         display: none;
     }
-    header .page-header-container .skip-links {
-        top: 2.2em;
-    }
     .soc li {
         margin-right: 0.1em;
         font-size: 0.8em;
@@ -1319,13 +1309,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
     .header-respo {
         display: none;
     }
-    .header-language-background .header-language-background-container {
-        padding: 0em 4em;
-    }
-    .page-header-container #header-nav {
-        margin-left: 0;
-        padding: 0 1em;
-        z-index: 999999;
+    header-language-background {
+        display: none;
     }
     header .page-header-container {
         z-index: 1000000;
@@ -1340,21 +1325,24 @@ and (-webkit-min-device-pixel-ratio: 2) {
         width: 241px;
     }
    .logotop2 {
-        float:left;
         margin: 0;
         padding: 0;
-        position: relative;
-        top: -0.95em;
-        display: block;
+        top: 1.25em;
         opacity: 1;
-        left: -0.5em;
+        left: 3.2em;
+        visibility: visible;
+        width: auto;
+   }
+   .logotop2 a {
+        width: auto;
+        width: auto;
    }
    .logotop2 .toggle-menu {
         display: none;
    }
    .logotop2 img {
         margin: 0;
-        max-width: 90%;
+        max-width: 80%;
    }
    #page-header .logotop {
         display: none;
@@ -1585,9 +1573,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
 }
 
 @media only screen and (min-width : 1025px) and (max-width : 1920px)  {
-    .header-language-background .header-language-background-container {
-        padding: 1em 4em;
-    }
     .logotop {
         display: block;
     }
@@ -1623,8 +1608,26 @@ and (-webkit-min-device-pixel-ratio: 2) {
         bottom: 10%;
         font-size: 3em;
     }
-    .row{
-        overflow: inherit;
+    .col-right .checkout-review-table .product-cart-total {
+        float: none;
+        width: auto;
+        text-align: left;
+        margin-bottom: 0.3em;
+    }
+    .col-right .checkout-review-table .product-cart-total .inc-tva {
+        display: block;
+    }
+    .col-right .checkout-review-table .product-cart-actions {
+        width: auto;
+    }
+    .col-right .checkout-review-table td.product-cart-image {
+        width: 40%;
+    }
+    .col-right #checkout-progress-wrapper .totals label,
+    .col-right #checkout-progress-wrapper .totals span,
+    .col-right #checkout-progress-wrapper .show-order, 
+    .col-right #checkout-progress-wrapper .essayage {
+        font-size: 1.3em;
     }
 
 }

@@ -135,14 +135,13 @@ body {
 /*
  * Addresses `outline` inconsistency between Chrome and other browsers.
  */
-a:focus {
-    outline: thin dotted;
-    }
 /*
  * Improves readability when focused and also mouse hovered in all browsers.
  */
+a,
 a:active,
-a:hover {
+a:hover,
+a:focus {
     outline: 0;
     }
 /* ==========================================================================
@@ -155,6 +154,10 @@ a:hover {
 h1 {
     font-size: 2em;
     }
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
 /*
  * Addresses styling not present in IE 8/9, Safari 5, and Chrome.
  */
@@ -2427,9 +2430,6 @@ form .legend {
 /* -------------------------------------------- *
  * Input Box
  */
-.input-box {
-    padding-top: 2px;
-    }
 .input-box:after {
     content: '';
     display: table;
@@ -3029,27 +3029,37 @@ body {
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
     }
 .page-header-container #header-nav { 
-    margin-left: 3.5em;
+    left: 4.3%;
+    margin-top: 3%;
 }
 /* ============================================ *
  * Language switcher + welcome message
  * ============================================ */
 .header-language-background {
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
-    font-size: 12px;
+    font-size: 0.86em;
     text-transform: uppercase;
     width: 100%;
-    z-index: 999999;
+    z-index: 99999;
     background: url(../images/top.jpg) no-repeat center top #ffffff;
     position: fixed;
-    padding-bottom: 1em;
+    padding: 2em 4em;
+    transition:0.5s;
+    line-height: 1.2em;
+    height: 62px;
+}
+.header-language-background.reduced-height {
+    padding: 1.05em 4em;
+}
+.header-language-background.reduced-height #header-search #search_mini_form #search {
+    height: 26px;
+    top: -5px;
 }
 .header-language-background .header-language-background-container {
     margin: 0 auto;
     position: relative;
     max-width: 1920px;
     font-family: 'FuturaPT-Medium';
-    padding: 1em 4em;
     }
 .page {
     max-width: 1920px;
@@ -3079,6 +3089,7 @@ body {
     height: 36px; 
     position:relative;
     top: -9px;
+    outline: none;
 }
 #header-search #search_mini_form .search-button::before, #header-search #search_mini_form .search-button { 
     background: none;
@@ -3133,29 +3144,47 @@ body {
     }
 .logo img {
     max-width: 40%;
-    margin-bottom: 2em;
     }
 .logo .small {
     display: block;
     }
 .logo .large {
-    margin-top:3.5em;
+    margin-top:2.5em;
     }
 .logo:hover {
     /* opacity: 0.8;*/
     }
-.logotop { clear: both; text-align: center }
+.logotop { 
+    clear: both;
+    text-align: center;
+    margin: 0em 0 0.5em 0;
+}
 .logotop2 {
-    display: none;
+    visibility: hidden;
     transition:0.5s;
-    margin: 1em auto 0.5em;
-    padding-top: 1.5em;
     opacity: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 10000000;
+    background-color: white;
+    top: 2.8em;
+    padding:0.3% 4% 0.6% 4%;
+}
+.logotop2 h1 {
+    margin: 0;
+}
+.logotop2 a {
+    display: block;
+    width: 354px;
+    margin: auto;
 }
 .logotop2 .toggle-menu {
     position: relative;
-    top: 2em;
     font-size: 1.35em;
+    float: left;
+    font-family: 'FuturaPT-Light';
+    line-height: 1.7em;
+    top: 0.1em;
 }
 .logotop2 .toggle-menu span {
     cursor:pointer;
@@ -3350,14 +3379,15 @@ a.skip-link {
  * ============================================ */
 #nav {
     transition:0.5s;
-    padding-top: 1.5em;
     opacity: 1;
+    visibility: visible;
 }
 #nav.show-nav {
     opacity: 1;
 }
 #nav.hide-nav {
     opacity: 0;
+    visibility: hidden;
 }
 #nav .nav-top-border {
     width: 1.2em;
@@ -10713,7 +10743,6 @@ div.calendar table td.button {
     top: 0;
     width: 100%;
     z-index: 1001;
-    padding-top: 5px;
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
     font-size: 14px !important;
     text-transform: uppercase;
@@ -11171,9 +11200,6 @@ span .blank {
     margin: 0 auto;
     width: 50%;
     }
-.category-products {
-    margin-top: 20px;
-    }
 /* Page cart */
 .col2-left-layout .main, .customer-account-login .main, .customer-account-create .main{
     margin: 0 auto;
@@ -11258,11 +11284,58 @@ span .blank {
     width: 50%; float: left;
     font-family: "FuturaPT-Book","Helvetica Neue",Verdana,Arial,sans-serif;
     }
+.col-right .checkout-review-table .product-cart-actions div {
+    margin-bottom: 0.6em;
+}
+.col-right .checkout-review-table .product-cart-actions span.decrement-qty,
+.col-right .checkout-review-table .product-cart-actions span.increment-qty {
+    cursor: pointer;
+    background : url("../images/chevron-light.png") no-repeat 0% 46%;
+    text-indent: -900000em;
+    display: inline-block;
+    width: 9px;
+    height: 21px;
+}
+.col-right .checkout-review-table .product-cart-actions span {
+    font-size: 1.1em;
+    line-height: 1.2em;
+}
+.col-right .checkout-review-table .product-cart-actions span.decrement-qty {
+    padding:0em 0.4em;
+    margin-left: 0.4em;
+}
+.col-right .checkout-review-table .product-cart-actions span.increment-qty {
+    transform:rotate(-180deg);
+    padding:0em 0.4em;
+}
+.col-right .checkout-review-table .product-cart-actions .pdt-size {
+    padding: 0;
+    border: 1px solid #000;
+    width: 83px;
+    border-radius: 0px;
+    overflow: hidden;
+    background-color: #fff;
+    background: #fff url("../images/select-arrow.png") no-repeat 90% 50%;
+}
+.col-right .checkout-review-table .product-cart-actions .pdt-size select {
+    padding: 0em 1.5em 0em 0.6em;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 1.1em;
+}
+.col-right .checkout-review-table .product-cart-actions .pdt-size select:focus {
+    outline: none;
+}
 .col-right .checkout-review-table .product-cart-total {
     width: 50%;
     float: right;
     text-align: right;
-    font-size: 21px;
+    font-size: 1.3em;
     line-height: 1em;
     }
 .col-right .checkout-review-table .product-cart-total .inc-tva {
@@ -11294,7 +11367,7 @@ span .blank {
     width: 60%;
     text-align: left;
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
-    font-size: 21px;
+    font-size: 1.5em;
     font-weight: normal;
     }
 .col-right #checkout-progress-wrapper .totals span {
@@ -11305,15 +11378,22 @@ span .blank {
     font-size: 21px;
     font-weight: normal;
     }
+.col-right #checkout-progress-wrapper .totals .total-order label,
+.col-right #checkout-progress-wrapper .totals .total-order span {
+    font-family: "FuturaPT-Medium", Verdana, Arial, sans-serif;
+}
 .col-right #checkout-progress-wrapper .show-order, .col-right #checkout-progress-wrapper .essayage {
     font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
-    font-size: 23px;
+    font-size: 1.5em;
     font-weight: normal;
     clear: both;
-    margin-left: 5%;
+    margin: 0 0 1% 5%;
+    letter-spacing: 0.1em;
     }
 .col-right #checkout-progress-wrapper .essayage a {
     text-decoration: underline;
+    margin: 0;
+    font-size: 1em;
     }
 /*Page Checkout */
 .col2-left-layout .page-title h1, .col3-layout .page-title h1 {

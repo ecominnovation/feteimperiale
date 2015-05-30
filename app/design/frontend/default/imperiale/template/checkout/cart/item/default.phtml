@@ -307,9 +307,23 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif; ?>
     </div>
     <?php endif; ?>
-        <div class="product-cart-actions" data-rwd-label="<?php echo $this->__('Qty'); ?>">
-       <span><?php echo $this->__('Quantity:'); ?> <span class="decrement-qty"><</span><span class="final-qty"></span></span><span class="increment-qty">></span></span> 
-       <input type="hidden" pattern="\d*" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
+    <div class="product-cart-actions" data-rwd-label="<?php echo $this->__('Qty'); ?>">
+       <div class="pdt-color"><span><?php echo $this->__('Couleur:'); ?> </span></div>
+       <div class="pdt-size">
+           <select name="check-minicart-sizeselect" id="check-minicart-size">
+               <option selected value="S">Taille S</option>
+               <option value="M">Taille M</option>
+           </select>
+        </div>
+        <div class="pdt-qty">
+            <span>
+                <?php echo $this->__('Quantity:'); ?> 
+                <span class="decrement-qty"><</span>
+                <span class="final-qty"><?php echo $this->getQty() ?></span>
+                <span class="increment-qty">></span>
+            </span> 
+            <input type="hidden" pattern="\d*" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
+        </div>
 <br/>
         <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update'); ?></span></span>
         </button>

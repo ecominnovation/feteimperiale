@@ -1153,23 +1153,24 @@ $j(document).ready(function () {
             var initialScrollTopPos = $j(document).scrollTop() + 104;
             if(initialScrollTopPos > navTopPos) {
                 $j('#nav').offset({top:initialScrollTopPos});
-                $j('.logotop2').show();
-                $j('.logotop2').css('opacity','1');
+                $j('.header-language-background').addClass('reduced-height');
+                $j('.logotop2').css({'opacity' :'1','visibility':'visible'});
             } else if (initialScrollTopPos < navTopPos) {
                  $j('#nav').removeClass('hide-nav');
             }
             $j(window).scroll(function(){
                 var fixedHeaderHeight = $j('.header-language-background').height();
-                var scrollTopPos = $j(document).scrollTop() + fixedHeaderHeight;
+                var scrollTopPos = $j(document).scrollTop() + fixedHeaderHeight + 80;
                 if(scrollTopPos < navTopPos) {
+                    $j('.header-language-background').removeClass('reduced-height');
                     $j('#nav').offset({top:navTopPos});
                     $j('#nav').addClass('show-nav').removeClass('hide-nav');
-                    $j('.logotop2').hide()
+                    $j('.logotop2').css({'opacity' :'0','visibility':'hidden'});
                 } else if(scrollTopPos > navTopPos) {
                     $j('#nav').removeClass('show-nav').addClass('hide-nav');
-                    $j('.logotop2').show();
-                    $j('.logotop2').css('opacity','1');
+                    $j('.logotop2').css({'opacity' :'1','visibility':'visible'});
                     $j('#nav').offset({top:scrollTopPos});
+                    $j('.header-language-background').addClass('reduced-height')
                 }
             });
         },500);
@@ -1241,15 +1242,19 @@ $j(document).ready(function () {
     // ==============================================
     // Checkout Scripts increment quantity
     // ==============================================
-    var initialPrdQty = $j('input.qty').val();
-    $j('.final-qty').text(initialPrdQty);
-    var tempPrdQty = $j('.final-qty').text();
-    var finalPrdQty = parseInt(tempPrdQty);
-    $j('.decrement-qty').click(function(){
-        $j('final-qty').text(finalPrdQty--);
+    $j('.decrement-qty').bind('click', function(){
+        var initialPrdQty = $j(this).parent().next().val();
+        var finalPrdQty =  initialPrdQty--;
+        finalPrdQty--;
+        $j(this).next().text(finalPrdQty);
+        $j(this).parent().next().val(finalPrdQty);
     });
-    $j('.increment-qty').click(function(){
-        $j('final-qty').text(finalPrdQty++);
+    $j('.increment-qty').bind('click', function(){
+        var initialPrdQty = $j(this).parent().next().val();
+        var finalPrdQty = initialPrdQty++;
+        finalPrdQty++
+        $j(this).prev().text(finalPrdQty);
+        $j(this).parent().next().val(finalPrdQty);
     });
 
 });
