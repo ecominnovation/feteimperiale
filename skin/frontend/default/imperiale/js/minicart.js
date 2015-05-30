@@ -128,7 +128,10 @@ Minicart.prototype = {
     },
 
     updateCart: function() {
-        var cart = this;
+        var cart = this,
+            path = Mage.Cookies.path,
+            basePath  = (path === '/') ? '' : path,
+            url = basePath + '/checkout/cart/updatecart';        
 
         cart.hideMessage();
         cart.showOverlay();
@@ -136,7 +139,7 @@ Minicart.prototype = {
         $j.ajax({
             type: 'POST',
             dataType: 'json',
-            url: '/checkout/cart/updatecart',
+            url: url,
         }).done(function(result) {
             cart.hideOverlay();
             if (result.success) {
@@ -152,7 +155,7 @@ Minicart.prototype = {
 
         return false;
     },
-    
+
     updateItem: function(el) {
         var cart = this;
         var input = $j(this.selectors.quantityInputPrefix + $j(el).data('item-id'));
