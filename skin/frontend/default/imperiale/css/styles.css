@@ -142,7 +142,7 @@ a,
 a:active,
 a:hover,
 a:focus {
-    outline: 0;
+    outline: none !important;
     }
 /* ==========================================================================
    Typography
@@ -1145,7 +1145,7 @@ a.button:hover {
     font-weight: normal;
     }
 .breadcrumbs span {
-    padding: 0 7px;
+    padding: 0 0.1em;
     }
 @media only screen and (max-width: 770px) {
     .breadcrumbs {
@@ -2106,7 +2106,7 @@ span.weee {
     margin-bottom: 5px;
     }
 .pages ol {
-    text-align: right;
+    text-align: center;
     }
 .pages strong {
     display: none;
@@ -2127,6 +2127,9 @@ span.weee {
     vertical-align: middle;
     white-space: nowrap;
     }
+.pages .current {
+    font-family: "FuturaPT-Medium", "Helvetica Neue", Verdana, Arial, sans-serif;
+}
 .toolbar-top {
     width: 92%;
     margin: 0 auto;
@@ -2537,7 +2540,7 @@ input[type=number],
 input[type=password],
 input[type=tel],
 input[type=text] {
-    height: 52px;
+    height: 39px;
     padding: 0 8px;
     }
 input[type=email],
@@ -3139,9 +3142,6 @@ body {
 /* ============================================ *
  * Logo
  * ============================================ */
-.logo {
-
-    }
 .logo img {
     max-width: 40%;
     }
@@ -3365,6 +3365,7 @@ a.skip-link {
     #header-nav #header-nav {
         left: 0%;
         padding-left: 2px;
+        display: none;
         }
     }
 /* ============================================ *
@@ -4236,12 +4237,12 @@ p.product-name a:hover {
     }
 .products-grid .link1.noms-2 {
     line-height: 53px;
-    top: 31%;
+    top: 38%;
     }
 .products-grid .link2 {
     color: #000000;
-    font-size: 22px;
-    top: 51%;
+    font-size: 2em;
+    top: 53%;
     display: none;
     }
 .products-grid .link2 .blank {
@@ -4249,7 +4250,7 @@ p.product-name a:hover {
     }
 .products-grid .link2.noms-1 {
     letter-spacing: 0.5px;
-    top: 51%;
+    top: 49%;
     }
 a.product-image:hover .link1 {
     display: block;
@@ -5776,6 +5777,7 @@ display: block;
     }
 #sizeguide {
     z-index: 999999;
+    font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif
     }
 .sizeguide-link {
     text-decoration: underline;
@@ -5866,6 +5868,7 @@ table.size-table {
     text-transform: uppercase;
     font-size: 13px;
     text-align: center;
+    font-family: "FuturaPT-Book", "Helvetica Neue", Verdana, Arial, sans-serif;
     }
 table.size-table tr {
     border-bottom: 1px solid black;
@@ -11291,10 +11294,9 @@ span .blank {
 .col-right .checkout-review-table .product-cart-actions span.increment-qty {
     cursor: pointer;
     background : url("../images/chevron-light.png") no-repeat 0% 46%;
-    text-indent: -900000em;
     display: inline-block;
     width: 9px;
-    height: 21px;
+    height: 13px;
 }
 .col-right .checkout-review-table .product-cart-actions span {
     font-size: 1.1em;
@@ -11430,11 +11432,41 @@ span .blank {
     padding-right: 30px;
     text-align: right;
     width: 30%;
+    position: relative;
+    top: 0.3em;
     }
+.col3-layout .opc .password-forgotten a {
+    color:#737373;
+}
+.col3-layout .opc .field label[for="login-password"] {
+    display: none;
+}
+.col3-layout .opc .field input#login-password {
+    max-width: 240px;
+    position: relative;
+    left: 1.2em;
+}
+.col3-layout .opc .field-radio .radio-box {
+    width: 40%;
+    margin: auto;
+}
+.col3-layout .opc .field-radio .radio-box label {
+    float: none;
+    width: auto;
+    display: inline;
+}
+.col3-layout .opc .field-radio .radio-box input {
+    width: auto;
+    vertical-align: middle;
+    margin-right: 0.3em;
+}
 .col3-layout .opc .field .input-box, .col3-layout .opc .wide .input-box, .my-account .field .input-box, .my-account .wide .input-box {
     float: left;
     width: 70%;
     }
+.col3-layout .opc .field .password-box {
+    float: right;
+}
 .col3-layout .opc .field input, .col3-layout .opc .wide input, .col3-layout .opc select, .my-account .field input, .my-account .wide input, .my-account select {
     max-width: 300px;
     width: 90%;
@@ -11475,6 +11507,7 @@ span .blank {
     }
 .col3-layout .opc .buttons-set {
     border: 0;
+    margin:1em 0 2em 0;
     }
 .col3-layout .opc .buttons-set button.button, .opc .buttons-set button.button {
     min-width: 0 !important;

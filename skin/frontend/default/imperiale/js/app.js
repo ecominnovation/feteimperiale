@@ -1257,6 +1257,16 @@ $j(document).ready(function () {
         $j(this).parent().next().val(finalPrdQty);
     });
 
+    // ==============================================
+    // image crop on product page
+    // ==============================================
+    if ($j(window).width() < 769) {
+        $j(".imgLiquidFill").imgLiquid({
+            fill: true,
+            horizontalAlign: "center",
+            verticalAlign: "top"
+        });
+    }
 });
 
 // ==============================================

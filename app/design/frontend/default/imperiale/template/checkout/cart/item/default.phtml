@@ -315,9 +315,9 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <div class="pdt-qty">
             <span>
                 <?php echo $this->__('Quantity:'); ?> 
-                <span class="decrement-qty"><</span>
+                <span class="decrement-qty"></span>
                 <span class="final-qty"><?php echo $this->getQty() ?></span>
-                <span class="increment-qty">></span>
+                <span class="increment-qty"></span>
             </span> 
             <input type="hidden" pattern="\d*" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
         </div>

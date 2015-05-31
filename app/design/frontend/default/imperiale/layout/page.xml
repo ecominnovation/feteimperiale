@@ -64,6 +64,7 @@
                 <action method="addItem"><type>skin_js</type><name>js/lib/matchMedia.addListener.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/enquire.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/jquery.remodal.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/imgLiquid-min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/app.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/jquery.cycle2.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/jquery.cycle2.swipe.min.js</name></action>
