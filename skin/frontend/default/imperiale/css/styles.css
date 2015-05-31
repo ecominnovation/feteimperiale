@@ -11445,6 +11445,7 @@ span .blank {
     max-width: 240px;
     position: relative;
     left: 1.2em;
+    letter-spacing: -6px;
 }
 .col3-layout .opc .field-radio .radio-box {
     width: 40%;
